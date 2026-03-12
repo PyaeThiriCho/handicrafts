@@ -15,4 +15,19 @@ class FrontendController extends Controller
     {
         return view('frontend.ui.aboutpage');
     }
+
+    public function contact()
+    {
+        return view('frontend.ui.contactpage');
+    }
+
+    public function register()
+    {
+        return view('frontend.ui.registerpage');
+    }
+
+     public function login()
+    {
+        return view('frontend.ui.loginpage');
+    }
 }

@@ -31,11 +31,11 @@
 
         <div id="navBar" class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a href="" class="nav-link ms-3 fw-medium nav_hover">Home</a></li>
+                <li class="nav-item"><a href="{{ route('homepage') }}" class="nav-link ms-3 fw-medium nav_hover">Home</a></li>
                 {{-- <li class="nav-item"><a href="" class="nav-link ms-3 fw-medium nav_hover">Shop</a></li> --}}
 
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle ms-3 fw-medium nav_hover" data-bs-toggle="dropdown">
+                    <a href="" class="nav-link dropdown-toggle ms-3 fw-medium nav_hover" data-bs-toggle="dropdown">
                         Products
                     </a>
                     <ul class="dropdown-menu">
@@ -45,10 +45,10 @@
                     </ul>
                 </li>
 
-                <li class="nav-item"><a href="" class="nav-link ms-3 fw-medium nav_hover">About</a></li>
-                <li class="nav-item"><a href="" class="nav-link ms-3 fw-medium nav_hover">Contact</a></li>
-                <li class="nav-item"><a href="" class="nav-link ms-3 nav_hover">Register</a></li>
-                <li class="nav-item"><a href="" class="nav-link ms-3 nav_hover">Login</a></li>
+                <li class="nav-item"><a href="{{ route('aboutpage') }}" class="nav-link ms-3 fw-medium nav_hover">About</a></li>
+                <li class="nav-item"><a href="{{ route('contactpage') }}" class="nav-link ms-3 fw-medium nav_hover">Contact</a></li>
+                <li class="nav-item"><a href="{{ route('registerpage') }}" class="nav-link ms-3 nav_hover">Register</a></li>
+                <li class="nav-item"><a href="{{ route('loginpage') }}" class="nav-link ms-3 nav_hover">Login</a></li>
 
                 <li class="nav-item">
                     <a href="" class="nav-link ms-3">

@@ -19,3 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[App\Http\Controllers\FrontendController::class, 'index'])->name('homepage');
 Route::get('/about',[App\Http\Controllers\FrontendController::class, 'about'])->name('aboutpage');
+Route::get('/contact',[App\Http\Controllers\FrontendController::class, 'contact'])->name('contactpage');
+
+Route::get('/register',[App\Http\Controllers\FrontendController::class, 'register'])->name('registerpage');
+Route::get('/login',[App\Http\Controllers\FrontendController::class, 'login'])->name('loginpage');
