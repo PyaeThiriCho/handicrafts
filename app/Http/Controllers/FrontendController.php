@@ -10,4 +10,9 @@ class FrontendController extends Controller
     {
         return view('frontend.ui.homepage');
     }
+
+     public function about()
+    {
+        return view('frontend.ui.aboutpage');
+    }
 }

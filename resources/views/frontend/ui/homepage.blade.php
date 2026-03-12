@@ -2,53 +2,42 @@
 @section('content')
   
   <!--carousel start-->
-   <div id="carouselExample" class="carousel slide">
+ <div id="carouselExample" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
-        <div class="carousel-item active">
-         <img src="{{ asset('frontend_assets/images/Bagan-Myanmar-sunset (1).jpg')}}" width="50" height="500"  class="d-block w-100" alt="...">
-    
-            <div class="carousel_text text-white d-none d-sm-block">
-                <h4>Raining Season Promotion</h4>
-                <p class="d-none d-md-block">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>Sed doloremque animi dolorem cum rerum laudantium accusamus,<br> iste eius culpa laborum!
-                </p>
-                <button class="btn btn-danger d-none d-md-block">Shop Now</button>
-
-             </div>
+        <div class="carousel-item active" data-bs-interval="5000">
+            <div class="carousel-image-container">
+                <img src="{{ asset('frontend_assets/images/Bagan-Myanmar-sunset (1).jpg')}}" class="d-block w-100 zoom-effect" alt="Bagan Sunset">
+            </div>
+            <div class="carousel-caption d-none d-md-block text-start custom-caption">
+                <div class="caption-content">
+                    <h4 class="animate-up">Myanmar Traditional Handicrafts</h4>
+                    <p class="animate-up-delay">Discover beautiful handmade crafts created by talented Myanmar artisans. Each product reflects our culture, tradition, and unique craftsmanship.</p>
+                    <button class="btn btn-danger btn-lg rounded-pill animate-up-btn">Shop Now</button>
+                </div>
+            </div>
         </div>
 
-      <div class="carousel-item">
-        <img src="{{ asset('frontend_assets/images/photo_2026-03-11_21-49-26.jpg')}}" width="30" height="500" class="d-block w-100" alt="...">
-            <div class="carousel_text text-white d-none d-sm-block">
-                <h4>Winter Season Promotion</h4>
-                <p class="d-none d-md-block">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>Sed doloremque animi dolorem cum rerum laudantium ''accusamus,<br> iste eius culpa laborum!
-                </p>
-                <button class="btn btn-danger d-none d-md-block">Shop Now</button>
-
+        <div class="carousel-item" data-bs-interval="5000">
+            <div class="carousel-image-container">
+                <img src="{{ asset('frontend_assets/images/photo_2026-03-11_21-49-26.jpg')}}" class="d-block w-100 zoom-effect" alt="Handmade Crafts">
             </div>
-      </div>
-      <div class="carousel-item">
-        <img src="{{ asset('frontend_assets/images/photo_2026-03-11_21-49-26 (2).jpg')}}" width="50"x height="500"  class="d-block w-100" alt="...">
-        <div class="carousel_text text-white d-none d-sm-block">
-            <h4>Summer Season Promotion</h4>
-            <p class="d-none d-md-block">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>Sed doloremque animi dolorem cum rerum laudantium accusamus,<br> iste eius culpa laborum!
-            </p>
-            <button class="btn btn-danger d-none d-md-block">Shop Now</button>
+            <div class="carousel-caption d-none d-md-block text-start custom-caption">
+                <div class="caption-content">
+                    <h4 class="animate-up">Authentic Handmade Crafts</h4>
+                    <p class="animate-up-delay">Explore a collection of traditional handicrafts made with care and creativity. Perfect for gifts and home decoration.</p>
+                    <button class="btn btn-danger btn-lg rounded-pill animate-up-btn">Shop Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        </div> 
-      </div>
-   
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
+        <span class="carousel-control-prev-icon p-3 bg-dark rounded-circle" aria-hidden="true"></span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+        <span class="carousel-control-next-icon p-3 bg-dark rounded-circle" aria-hidden="true"></span>
     </button>
-  </div>
+</div>
 
     <!--carousel end-->
 
@@ -394,14 +383,14 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6 my-2 text-center text-md-end order-0 order-md-1">
-                    <img src="images/photo_2025-04-30_08-32-09.jpg" alt="" class="img-fluid w-75">
+                    <img src="{{ asset('frontend_assets/images/photo_2026-03-11_21-05-52.jpg')}}" alt="" class="img-fluid w-75 ">
                 </div>
             </div>
         </div>
     </div>
     <!-- end subscribe -->
 
-    <!-- start promotion area -->
+    {{-- <!-- start promotion area -->
     <div class="container my-5">
         <h4 class="mb-0 pb-0">Promotion Areas</h4>
         <hr class="divided pt-0 mt-1 mb-4">
@@ -411,6 +400,114 @@
             </div>
             <div class="col-12 col-md-6 my-2">
                 <img src="images/2.jpg" alt="" class="img-fluid rounded shadow_box">
+            </div>
+        </div>
+    </div> --}}
+
+    <!--Review-->
+    <div class="container my-5">
+        <h1 class="font_h1 text-center text-secondary mb-3 my-0">Customer's Review</h1>
+        <div class="row">
+
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <div class="stars py-3 px-2">
+                        <i class="fas fa-star" style="color: red;"></i>
+                        <i class="fas fa-star" style="color: red;"></i>
+                        <i class="fas fa-star" style="color: red;"></i>
+                        <i class="fas fa-star" style="color: red;"></i>
+                        <i class="fas fa-star" style="color: red;"></i>
+                    </div>
+
+                    <p class="px-2">
+                       Great handicrafts with authentic Myanmar style.
+                        The materials and finishing are very impressive.
+                        It’s nice to support local artisans and traditions.
+                        Overall, a very satisfying shopping experience.
+                    </p>
+
+                    <div class="row ms-1">
+                        <div class="col-md-3 py-3">
+                            <div class="user">
+                                <img src="{{ asset('frontend_assets/images/rev1.jpg')}}" height="50" width="50" class="rounded-circle">
+                            </div>
+                        </div>
+
+                        <div class="col-md-9 py-3">
+                            <h5 class="mb-0 px-0">Ko Min</h5>
+                            <small  style="color: gray;">Happy Customer</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+             <div class="col-12 col-md-4">
+                <div class="card">
+                    <div class="stars py-3 px-2">
+                        <i class="fas fa-star" style="color: red;"></i>
+                        <i class="fas fa-star" style="color: red;"></i>
+                        <i class="fas fa-star" style="color: red;"></i>
+                        <i class="fas fa-star" style="color: red;"></i>
+                        <i class="fas fa-star" style="color: red;"></i>
+                    </div>
+
+                    <p class="px-2">
+                        I really love the unique and creative designs.
+                        Each product looks carefully handmade by skilled artisans.
+                        The quality is very good and worth the price.
+                        Perfect for gifts and home decoration.
+                    </p>
+
+                    <div class="row ms-1">
+                        <div class="col-md-3 py-3">
+                            <div class="user">
+                                    <img src="{{ asset('frontend_assets/images/review4.jpg')}}" height="50" width="50" class="rounded-circle">
+                            </div>
+                        </div>
+
+                        <div class="col-md-9 py-3">
+                            <h5 class="mb-0 px-0">Su Su</h5>
+                            <small  style="color: gray;">Happy Customer</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+             <div class="col-12 col-md-4">
+                <div class="card">
+                    <div class="stars py-3 px-2">
+                        <i class="fas fa-star" style="color: red;"></i>
+                        <i class="fas fa-star" style="color: red;"></i>
+                        <i class="fas fa-star" style="color: red;"></i>
+                        <i class="fas fa-star" style="color: red;"></i>
+                        <i class="fas fa-star" style="color: red;"></i>
+                    </div>
+
+                    <p class="px-2">
+                        A wonderful collection of Myanmar traditional crafts.
+                        The products are beautiful and culturally meaningful.
+                        Shopping on the website is easy and convenient.
+                        I will definitely buy again in the future.
+                    </p>
+
+                    <div class="row ms-1">
+                        <div class="col-md-3 py-3">
+                            <div class="user">
+                                <img src="{{ asset('frontend_assets/images/review6.jpg')}}" height="50" width="50" class="rounded-circle">
+                            </div>
+                        </div>
+
+                        <div class="col-md-9 py-3">
+                            <h5 class="mb-0 px-0">Thiha</h5>
+                            <small  style="color: gray;">Happy Customer</small>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
