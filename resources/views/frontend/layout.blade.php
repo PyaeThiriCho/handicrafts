@@ -8,8 +8,16 @@
     <!--bootstrap-->
     <link rel="stylesheet" href="{{ asset('frontend_assets/bootstrap/css/bootstrap.min.css')}}">
 
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+
     <!--style.css-->
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/style.css')}}">
+
+    {{-- Slide --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <!--icon-->
     <link rel="stylesheet" href="{{ asset('frontend_assets/font/css/all.min.css')}}">
@@ -36,11 +44,16 @@
      <!--jquery-->
      <script src="{{ asset('frontend_assets/js/jquery.min.js')}}" type="text/javascript"></script>
 
+     {{-- slick --}}
+    <script src="{{ asset('frontend_assets/js/slick.js')}}"></script>
+
     <!--custom js-->
     <script src="{{ asset('frontend_assets/js/custom.js')}}"></script>
 
+    {{-- Slide --}}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
    
-    <script src="{{ asset('frontend_assets/js/slick.js')}}"></script>
+   
 
      <!--bootstrap-->
     <script src="{{ asset('frontend_assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

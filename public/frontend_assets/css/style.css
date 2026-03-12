@@ -1,9 +1,25 @@
+body {
+    background-color: #fdf5e6 !important;
+    font-family: 'Noto Serif', serif; 
+    color: #333; 
+}
 
+
+section, .container-fluid:not(.bg-danger):not(.bg-dark) {
+    background-color: #fdf5e6;
+}
+
+.product-card, .review-card {
+    background-color: #ffffff; /* Keeping cards white makes them stand out */
+    border: 1px solid rgba(0,0,0,0.05);
+}
 .navbar {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(253, 245, 230, 0.95); 
     backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-light);
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
     transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.05);
 }
 
 .nav-link {
@@ -123,10 +139,235 @@
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
+/* Best Seller */
+/* Slider Dots Color */
+.swiper-pagination-bullet-active {
+    background: red !important;
+}
+
+/* Hover Animation Logic */
+.product-card {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.product-img-container {
+    position: relative;
+    overflow: hidden;
+    background: #fdfdfd;
+}
+
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    opacity: 0; /* Hidden */
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+/* On Hover: Show Icons */
+.product-card:hover .product-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.overlay-btn {
+    width: 40px;
+    height: 40px;
+    background: white;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.overlay-btn:hover {
+    background: red;
+    color: white !important;
+}
+/* End Best Seller */
+
+
+/* Explore By Id */
+/* Animation for the icons popping in */
+@keyframes iconPop {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.product-card:hover .overlay-btn {
+    animation: iconPop 0.3s ease-out forwards;
+}
+
+/* Stagger the second icon slightly for a better effect */
+.product-card:hover .overlay-btn:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+/* Ensure the overlay is smooth */
+.product-overlay {
+    transition: background 0.3s ease-in-out;
+}
+
+.product-card:hover .product-overlay {
+    background: rgba(0, 0, 0, 0.4); /* Darkens the image slightly on hover */
+}
+
+/* Image Pop-up (Zoom) Effect */
+.zoom-img {
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .zoom-img {
+    transform: scale(1.1); /* Zooms the image in */
+}
+
+/* Custom button hover styling */
+.view-all-btn {
+    border: 2px solid red;
+    color: red;
+    transition: all 0.3s ease;
+}
+
+.view-all-btn:hover {
+    background-color: red !important;
+    color: white !important;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+/* end explore by categories */
+
+
+/* Floating animation for Subscribe Image */
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+.floating-img {
+    animation: floating 4s ease-in-out infinite;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+}
+
+/* Review Card Hover Effect */
+.review-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-bottom: 3px solid transparent !important;
+}
+
+.review-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+    border-bottom: 3px solid red !important; /* PSM Red accent */
+}
+
+/* Input group styling for Subscribe */
+.input-group.rounded-pill {
+    overflow: hidden;
+    max-width: 450px;
+}
+
+/* Red Divider consistency */
+.divided {
+    width: 60px;
+    height: 3px;
+    background-color: red;
+    border: none;
+    opacity: 1;
+    margin-top: -10px;
+}
+
+ 
+/* Review  */
+.review-card {
+    transition: all 0.4s ease-in-out;
+    background: #fff;
+    border-radius: 15px !important;
+}
+
+.review-card:hover {
+    transform: translateY(-10px); /* Lifts the card */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+    border-bottom: 4px solid red !important; /* Matches PSM red theme */
+}
+
+/* Red Divider Style */
+.divided {
+    width: 60px;
+    height: 3px;
+    background-color: red;
+    border: none;
+    opacity: 1;
+    margin-top: -10px;
+}
+
+
+/* footer */
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #adb5bd; /* Soft gray */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: red !important; /* PSM signature red */
+    padding-left: 8px; /* Subtle "slide" effect on hover */
+}
+
+/* Social Icon Styling */
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background: #333;
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background: red;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Background adjustment for consistency */
+footer.bg-dark {
+    background-color: #111 !important; /* Deep black to make red pop */
+}
+
+
+
+
+
+
+
+
+
+
 
 
 /* About page */
-/* Image Overlap Logic for about page */ 
 .image-stack {
     position: relative;
     display: inline-block;
@@ -287,6 +528,7 @@
     transition: all 0.3s ease;
 }
 /* end Login page */
+
 
 
 
