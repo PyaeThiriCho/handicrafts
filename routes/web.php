@@ -23,3 +23,12 @@ Route::get('/contact',[App\Http\Controllers\FrontendController::class, 'contact'
 
 Route::get('/register',[App\Http\Controllers\FrontendController::class, 'register'])->name('registerpage');
 Route::get('/login',[App\Http\Controllers\FrontendController::class, 'login'])->name('loginpage');
+
+//Backend
+Route::get('/table',[App\Http\Controllers\BackendController::class, 'index'])->name('table');
+
+Route::resource('categories', App\Http\Controllers\CategoryController::class);
+Route::resource('products', App\Http\Controllers\ProductController::class);
+
+
+
