@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-6 col-md-9">
                 <small>
-                    <span class="me-3 d-none d-md-inline-block"><i class="fa-solid fa-location-dot me-1"></i>Mandalay,Myotha</span>
+                    <span class="me-3 d-none d-md-inline-block"><i class="fa-solid fa-location-dot me-1"></i>Mandalay, Myotha</span>
                     <span><i class="fa-solid fa-phone-volume me-1"></i>09-255409595</span>
                 </small>
             </div>
@@ -20,25 +20,25 @@
     </div>
 </div>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
     <div class="container">
-        <img src="{{ asset('frontend_assets/images/photo_2026-03-11_21-05-52.jpg')}}" width="100" height="45">
-        
+        <a href="{{ route('homepage') }}">
+            <img src="{{ asset('frontend_assets/images/photo_2026-03-11_21-05-52.jpg')}}" width="100" height="45">
+        </a>
 
         <button class="navbar-toggler" data-bs-target="#navBar" data-bs-toggle="collapse">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div id="navBar" class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto align-items-center">
                 <li class="nav-item"><a href="{{ route('homepage') }}" class="nav-link ms-3 fw-medium nav_hover">Home</a></li>
-                {{-- <li class="nav-item"><a href="" class="nav-link ms-3 fw-medium nav_hover">Shop</a></li> --}}
 
                 <li class="nav-item dropdown">
                     <a href="" class="nav-link dropdown-toggle ms-3 fw-medium nav_hover" data-bs-toggle="dropdown">
                         Products
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu border-0 shadow-sm">
                         <li><a class="dropdown-item nav_hover" href="#">Women</a></li>
                         <li><a class="dropdown-item nav_hover" href="#">Men</a></li>
                         <li><a class="dropdown-item nav_hover" href="#">Kid</a></li>
@@ -47,9 +47,37 @@
 
                 <li class="nav-item"><a href="{{ route('aboutpage') }}" class="nav-link ms-3 fw-medium nav_hover">About</a></li>
                 <li class="nav-item"><a href="{{ route('contactpage') }}" class="nav-link ms-3 fw-medium nav_hover">Contact</a></li>
-                <li class="nav-item"><a href="{{ route('registerpage') }}" class="nav-link ms-3 nav_hover">Register</a></li>
-                <li class="nav-item"><a href="{{ route('loginpage') }}" class="nav-link ms-3 nav_hover">Login</a></li>
 
+                {{-- AUTHENTICATION LINKS --}}
+                @guest
+                    <li class="nav-item"><a href="{{ route('register') }}" class="nav-link ms-3 nav_hover">Register</a></li>
+                    <li class="nav-item"><a href="{{ route('login') }}" class="nav-link ms-3 nav_hover">Login</a></li>
+                @endguest
+
+                @auth
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle ms-3 fw-bold text-danger nav_hover" href="#" data-bs-toggle="dropdown">
+                            <i class="fa-solid fa-circle-user me-1"></i> {{ Auth::user()->name }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm">
+                            @if(Auth::user()->hasRole('Admin'))
+                                <li><a class="dropdown-item small" href="/roles"><i class="fa-solid fa-gauge-high me-2"></i>Admin Dashboard</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                            @endif
+                            <li>
+                                <a class="dropdown-item small text-danger" href="{{ route('logout') }}" 
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fa-solid fa-right-from-bracket me-2"></i> Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endauth
+
+                {{-- ICONS --}}
                 <li class="nav-item">
                     <a href="" class="nav-link ms-3">
                         <i class="fa-solid fa-cart-shopping fa-lg"></i>
@@ -62,7 +90,6 @@
                         <i class="fa-solid fa-magnifying-glass fa-rotate-90"></i>
                     </a>
                 </li>
-    
             </ul>
         </div>
     </div>

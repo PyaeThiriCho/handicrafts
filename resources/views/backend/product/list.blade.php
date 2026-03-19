@@ -1,99 +1,3 @@
-{{-- @extends('backend.layout')
-
-@section('content')
-<div class="card shadow mb-3 animated fadeInDown border-left-danger">
-    <div class="card-body bg-light">
-        <form action="{{ route('products.index') }}" method="GET" class="row">
-            <div class="col-md-5">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-maroon text-white border-danger"><i class="fas fa-search"></i></span>
-                    </div>
-                    <input type="text" name="search" class="form-control border-danger" placeholder="Search craft name..." value="{{ request('search') }}">
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <select name="category" class="form-control border-danger">
-                    <option value="">All Categories</option>
-                    @foreach($categories as $cat)
-                        <option value="{{ $cat->id }}" {{ request('category') == $cat->id ? 'selected' : '' }}>
-                            {{ $cat->name }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="col-md-3">
-                <button type="submit" class="btn btn-danger shadow-sm px-4">Find</button>
-                <a href="{{ route('products.index') }}" class="btn btn-outline-secondary shadow-sm">Reset</a>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div class="card shadow mb-4 animated fadeInUp">
-    <div class="card-header py-3 d-flex justify-content-between align-items-center bg-maroon" style="background-color: #8B0000;">
-        <h6 class="m-0 font-weight-bold text-white"><i class="fas fa-boxes mr-2"></i> Myanmar Craft Inventory</h6>
-        <a href="{{ route('products.create') }}" class="btn btn-gold btn-sm shadow-sm font-weight-bold" style="background-color: #D4AF37; color: #000;">
-            <i class="fas fa-plus-circle"></i> Add New Product
-        </a>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-hover table-bordered" width="100%" cellspacing="0">
-                <thead class="text-white" style="background-color: #A52A2A;">
-                    <tr>
-                        <th>Preview</th>
-                        <th>Product Name</th>
-                        <th>Category</th>
-                        <th>Stock</th>
-                        <th>Price (MMK)</th>
-                        <th class="text-center">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse($products as $product)
-                        <tr>
-                            <td class="text-center">
-                                <img src="{{ asset($product->image) }}" class="img-thumbnail shadow-sm" style="width: 50px; height: 50px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/50x50?text=No+Img'">
-                            </td>
-                            <td class="align-middle font-weight-bold text-maroon">{{ $product->name }}</td>
-                            <td class="align-middle"><span class="badge badge-light border text-danger">{{ $product->category?->name }}</span></td>
-                            <td class="align-middle font-weight-bold {{ $product->stock < 5 ? 'text-danger animated flash infinite slow' : '' }}">
-                                {{ $product->stock }}
-                            </td>
-                            <td class="align-middle">{{ number_format($product->price, 0) }}</td>
-                            <td class="text-center align-middle">
-                                <div class="btn-group">
-                                    <a href="{{ route('products.show', $product) }}" class="btn btn-sm btn-outline-info"><i class="fas fa-eye"></i></a>
-                                    <a href="{{ route('products.edit', $product) }}" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i></a>
-                                    <form action="{{ route('products.destroy', $product) }}" method="POST" class="d-inline">
-                                        @csrf @method('DELETE')
-                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete item?')"><i class="fas fa-trash"></i></button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr><td colspan="6" class="text-center py-5">No crafts match your search.</td></tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
-        <div class="mt-3 d-flex justify-content-center">
-            {{ $products->appends(request()->input())->links() }}
-        </div>
-    </div>
-</div>
-
-<style>
-    .bg-maroon { background-color: #8B0000; color: #fff; }
-    .text-maroon { color: #8B0000; }
-    .border-danger { border-color: #8B0000 !important; }
-</style>
-@endsection --}}
-
 @extends('backend.layout')
 
 @section('content')
@@ -120,9 +24,15 @@
                 <i class="fas fa-list mr-2"></i> 
                 {{ request('search') ? 'Results for: "'.request('search').'"' : 'Product Master List' }}
             </h6>
+            
+            {{-- 1. ONLY SHOW "ADD" BUTTON TO ADMINS --}}
+            @can('add products')
             <a href="{{ route('products.create') }}" class="btn btn-gold btn-sm shadow-sm font-weight-bold">
                 <i class="fas fa-plus"></i> Add Craft
             </a>
+            @endcan
+
+            
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -153,12 +63,21 @@
                                 </td>
                                 <td class="text-center align-middle">
                                     <div class="btn-group">
+                                        {{-- EVERYONE CAN VIEW --}}
                                         <a href="{{ route('products.show', $product) }}" class="btn btn-sm btn-outline-info"><i class="fas fa-eye"></i></a>
+
+                                        {{-- 2. ONLY SHOW EDIT TO ADMINS --}}
+                                        @can('edit products')
                                         <a href="{{ route('products.edit', $product) }}" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i></a>
+                                        @endcan
+
+                                        {{-- 3. ONLY SHOW DELETE TO ADMINS --}}
+                                        @can('delete products')
                                         <form action="{{ route('products.destroy', $product) }}" method="POST" class="d-inline">
                                             @csrf @method('DELETE')
                                             <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Remove this craft?')"><i class="fas fa-trash"></i></button>
                                         </form>
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>
@@ -182,7 +101,6 @@
     .btn-gold { background-color: #D4AF37; color: #000; border: none; }
     .border-bottom-maroon { border-bottom: 4px solid #8B0000; }
     
-    /* Custom Red Pagination Styles */
     .custom-pagination .page-item.active .page-link {
         background-color: #8B0000 !important;
         border-color: #8B0000 !important;

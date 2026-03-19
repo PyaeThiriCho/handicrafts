@@ -7,7 +7,7 @@
     <form action="{{ route('products.index') }}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
         <div class="input-group">
             <input type="text" name="search" class="form-control bg-light border-0 small" 
-                   placeholder="Find handicrafts..." aria-label="Search" 
+                   placeholder="Search for handicrafts (Lacquerware, Pottery...)" aria-label="Search" 
                    value="{{ request('search') }}" style="border: 1px solid #eee !important;">
             <div class="input-group-append">
                 <button class="btn shadow-sm" style="background-color: #A52A2A; color: white;" type="submit">
@@ -18,28 +18,52 @@
     </form>
 
     <ul class="navbar-nav ml-auto">
+
         <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw" style="color: #630000;"></i>
-                <span class="badge badge-counter" style="background-color: #A52A2A; color: white;">3+</span>
+                <span class="badge badge-counter" style="background-color: #D4AF37; color: black; font-weight: bold;">3</span>
             </a>
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header border-0" style="background-color: #A52A2A;">Inventory Alerts</h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                        <div class="icon-circle bg-warning text-white"><i class="fas fa-exclamation-triangle"></i></div>
+                    </div>
+                    <div>
+                        <div class="small text-gray-500">{{ date('M d, Y') }}</div>
+                        <span class="font-weight-bold">Lacquerware Bowl: Low stock alert!</span>
+                    </div>
+                </a>
+            </div>
         </li>
 
         <div class="topbar-divider d-none d-sm-block"></div>
 
         <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown">
-                <span class="mr-2 d-none d-lg-inline text-gray-800 small font-weight-bold">Pyae | Htet | Su</span>
-                <img class="img-profile rounded-circle border" 
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-800 small font-weight-bold">
+                    {{ Auth::user()->name }}
+                </span>
+                <img class="img-profile rounded-circle border shadow-sm" 
                      src="{{ asset('backend_assets/img/undraw_profile.svg') }}"
-                     style="border-color: #A52A2A !important; width: 30px; height: 30px;">
+                     style="border-color: #A52A2A !important; width: 32px; height: 32px;">
             </a>
-            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
-                <a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-danger"></i> Profile</a>
+            
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="{{ route('users.show', Auth::user()->id) }}">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-muted"></i> My Profile
+                </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                
+                <a class="dropdown-item text-danger font-weight-bold" href="#" 
+                   onclick="event.preventDefault(); document.getElementById('top-logout-form').submit();">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-danger"></i> Logout
                 </a>
+
+                <form id="top-logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </div>
         </li>
     </ul>
