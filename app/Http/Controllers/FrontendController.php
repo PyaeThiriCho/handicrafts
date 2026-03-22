@@ -6,101 +6,123 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash; 
 
-use App\Models\User; 
+use App\Models\User;
+use App\Models\Category;
+use App\Models\Product;
 
 class FrontendController extends Controller
 {
     public function index()
     {
-        return view('frontend.ui.homepage');
+        $categories = Category::all();
+        
+       // Fetch products. You can use ->take(8) to limit how many show on the home page
+        $products = Product::latest()->take(8)->get();
+
+        return view('frontend.ui.homepage', compact('categories', 'products'));
+    }
+
+    /**
+     * FIX: Added the missing showCategory method 
+     * This handles clicking a category like "Pottery" or "Woodwork"
+     */
+    public function showCategory($id)
+    {
+        $categories = Category::all(); // For the navbar
+        $category = Category::findOrFail($id); // The specific category selected
+        
+        // Only fetch products belonging to this category
+        $products = Product::where('category_id', $id)->get();
+
+        return view('frontend.ui.homepage', compact('categories', 'products', 'category'));
+    }
+
+    public function showProduct($id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::all(); 
+        
+        // Fetch related products from the same category, excluding the current one
+        $relatedProducts = Product::where('category_id', $product->category_id)
+                                ->where('id', '!=', $id)
+                                ->take(4) // Shows 4 related items
+                                ->get();
+        
+        return view('frontend.ui.product_details', compact('product', 'categories', 'relatedProducts'));
     }
 
     public function about()
     {
-        return view('frontend.ui.aboutpage');
+        $categories = Category::all();
+        return view('frontend.ui.aboutpage', compact('categories'));
     }
 
     public function contact()
     {
-        return view('frontend.ui.contactpage');
+        $categories = Category::all();
+        return view('frontend.ui.contactpage', compact('categories'));
     }
 
-    // login page
+    // --- Authentication Logic ---
+
     public function login()
     {
         return view('frontend.ui.loginpage');
     }
 
-    // This shows the register page
     public function register()
     {
         return view('frontend.ui.registerpage');
     }
 
-   public function loginPost(Request $request)
+    public function loginPost(Request $request)
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        if (\Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // 1. Check if the user has the 'Admin' role
-            if (\Auth::user()->hasRole('Admin')) {
-                // Send Admin to the backend dashboard
+            if (Auth::user()->hasRole('Admin')) {
                 return redirect('/table'); 
             }
 
-            // 2. If not an Admin, send them to the frontend shop
             return redirect('/');
         }
 
-    // If login fails
-    return back()->withErrors([
-        'email' => 'The provided credentials do not match our records.',
-    ])->onlyInput('email');
-}
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
+    }
 
     public function registerPost(Request $request)
     {
-        // 1. Validate the input from your register page
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', 'min:8'],
         ]);
 
-        // 2. Create the User in the database
-        $user = \App\Models\User::create([
+        $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
-            'password' => \Hash::make($validated['password']),
+            'password' => Hash::make($validated['password']),
         ]);
 
-        // 3. Automatically assign the 'User' role you just confirmed exists
         $user->assignRole('User');
-
-        // 4. Log them in and send them to the homepage
-        \Auth::login($user);
+        Auth::login($user);
 
         return redirect('/')->with('success', 'Registration successful! Welcome to PSM Craft House.');
     }
 
-
     public function logout(Request $request)
     {
-        // Logout
-        \Auth::logout();
-
-        // Invalidate the session to clear all data
+        Auth::logout();
         $request->session()->invalidate();
-
-        // Regenerate the CSRF token for the next guest session
         $request->session()->regenerateToken();
 
-        // Redirect to the login page with a success message
         return redirect('/login')->with('success', 'You have been logged out safely.');
     }
 }

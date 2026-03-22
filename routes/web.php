@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +24,9 @@ Route::get('/',[App\Http\Controllers\FrontendController::class, 'index'])->name(
 Route::get('/about',[App\Http\Controllers\FrontendController::class, 'about'])->name('aboutpage');
 Route::get('/contact',[App\Http\Controllers\FrontendController::class, 'contact'])->name('contactpage');
 
-
+//  to loop specific crafts like Pottery or Wood Carvings
+Route::get('/category/{id}', [FrontendController::class, 'showCategory'])->name('frontend.category');
+Route::get('/product/{id}', [FrontendController::class, 'showProduct'])->name('frontend.product.details');
    
 // 1. LOGIN ROUTES
 // This shows the login form

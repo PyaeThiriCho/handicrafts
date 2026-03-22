@@ -41,194 +41,96 @@
 <!--carousel end-->
 
 
-{{-- Best Seller --}}
-<section class="container my-5">
+
+{{-- Best Seller Section --}}
+<section class="container my-5" id="products">
     <div class="text-center mb-5">
         <h2 class="fw-bold" style="font-family: 'PT Serif', serif;">Best Sellers</h2>
         <hr class="divided mx-auto">
     </div>
 
+    {{-- Slide animation class --}}
     <div class="best-seller-slider">
-        <div class="px-2">
-            <div class="product-card">
-                <div class="product-img-container rounded">
-                    <img src="{{ asset('frontend_assets/images/about1.jpg')}}" class="img-fluid" alt="Handicraft">
-                    <div class="product-overlay">
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                </div>
-                <div class="product-info mt-3 text-center">
-                    <h6 class="fw-bold mb-1">Traditional Lacquerware</h6>
-                    <p class="text-danger fw-bold">45,000 MMK</p>
-                </div>
-            </div>
-        </div>
+        @foreach($products->take(8) as $product)
+        <div class="px-2"> {{-- Spacing for the slider --}}
+            <div class="product-card h-100 border-0 shadow-sm rounded p-2">
+                <div class="product-img-container rounded position-relative overflow-hidden">
+                    
+                    {{-- IMAGE PATH --}}
+                    <img src="{{ asset('storage/' . $product->image) }}" 
+                    class="img-fluid zoom-img w-100" 
+                    alt="{{ $product->name }}"
+                    style="height: 250px; object-fit: cover;"
+                    onerror="this.onerror=null;this.src='{{ asset('frontend_assets/images/about1.jpg') }}';">
 
-        <div class="px-2">
-            <div class="product-card">
-                <div class="product-img-container rounded">
-                    <img src="{{ asset('frontend_assets/images/about1.jpg')}}" class="img-fluid" alt="Handicraft">
-                    <div class="product-overlay">
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                </div>
-                <div class="product-info mt-3 text-center">
-                    <h6 class="fw-bold mb-1">Bamboo Sun Hat</h6>
-                    <p class="text-danger fw-bold">12,000 MMK</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="px-2">
-            <div class="product-card">
-                <div class="product-img-container rounded">
-                   <img src="{{ asset('frontend_assets/images/about1.jpg')}}" class="img-fluid" alt="Handicraft">
-                    <div class="product-overlay">
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                </div>
-                <div class="product-info mt-3 text-center">
-                    <h6 class="fw-bold mb-1">Lotus Silk Scarf</h6>
-                    <p class="text-danger fw-bold">85,000 MMK</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="px-2">
-            <div class="product-card">
-                <div class="product-img-container rounded">
-                  <img src="{{ asset('frontend_assets/images/about1.jpg')}}" class="img-fluid" alt="Handicraft">
-                    <div class="product-overlay">
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-cart-shopping"></i></a>
+                    {{-- Animated Hover Overlay --}}
+                    <div class="product-overlay d-flex align-items-center justify-content-center">
+                        <a href="{{ route('frontend.product.details', $product->id) }}" class="overlay-btn mx-1">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
+                        
+                        <a href="#" class="overlay-btn mx-1">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="product-info mt-3 text-center">
-                    <h6 class="fw-bold mb-1">Teak Wood Carving</h6>
-                    <p class="text-danger fw-bold">120,000 MMK</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="px-2">
-            <div class="product-card">
-                <div class="product-img-container rounded">
-                    <img src="{{ asset('frontend_assets/images/about1.jpg')}}" class="img-fluid" alt="Handicraft">
-                    <div class="product-overlay">
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                </div>
                 <div class="product-info mt-3 text-center">
-                    <h6 class="fw-bold mb-1">Marble Buddha Statue</h6>
-                    <p class="text-danger fw-bold">250,000 MMK</p>
+                    {{-- UPDATED TO $product->name --}}
+                    <h6 class="fw-bold mb-1" style="font-family: 'PT Serif', serif;">{{ $product->name }}</h6>
+                    <p class="text-danger fw-bold mb-2">{{ number_format($product->price) }} MMK</p>
                 </div>
             </div>
         </div>
-
-        <div class="px-2">
-            <div class="product-card">
-                <div class="product-img-container rounded">
-                    <img src="{{ asset('frontend_assets/images/about1.jpg')}}" class="img-fluid" alt="Handicraft">
-                    <div class="product-overlay">
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                </div>
-                <div class="product-info mt-3 text-center">
-                    <h6 class="fw-bold mb-1">Hand-painted Umbrella</h6>
-                    <p class="text-danger fw-bold">18,000 MMK</p>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </section>
-{{-- End Best Seller --}}
+{{-- end best seller --}}
+
 
 
 {{-- Explore By Categories --}}
 <section class="container my-5 pb-5">
     <div class="text-center mb-5">
         <h2 class="fw-bold" style="font-family: 'PT Serif', serif;">Explore By Categories</h2>
-        <hr class="divided mx-auto">
+        <hr class="divided mx-auto" style="width: 50px; border-top: 3px solid red;">
     </div>
 
     <div class="row g-4">
+        @foreach($categories as $cat)
         <div class="col-md-6 col-lg-3">
-            <div class="product-card">
-                <div class="product-img-container rounded shadow-sm">
-                     <img src="{{ asset('frontend_assets/images/about1.jpg')}}" class="img-fluid zoom-img" alt="Handicraft">
-                    <div class="product-overlay">
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-cart-shopping"></i></a>
+            <div class="product-card border-0 shadow-sm rounded p-2 bg-white">
+                <div class="product-img-container rounded position-relative overflow-hidden">
+                    
+                    {{-- IMAGE PATH --}}
+                    <img src="{{ asset('frontend_assets/images/' . Str::slug($cat->name) . '.jpg') }}" 
+                         class="img-fluid zoom-img w-100" 
+                         alt="{{ $cat->name }}"
+                         style="height: 200px; object-fit: cover;"
+                         onerror="this.onerror=null;this.src='{{ asset('frontend_assets/images/about1.jpg') }}';">
+                    
+                    <div class="product-overlay d-flex align-items-center justify-content-center">
+                        <a href="{{ url('/category/'.$cat->id) }}" 
+                           class="overlay-btn bg-danger text-white border-0 d-flex align-items-center justify-content-center" 
+                           style="width: 45px; height: 45px; border-radius: 5px; transition: 0.3s;">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
                     </div>
                 </div>
+
                 <div class="product-info mt-3 text-center">
-                    <h6 class="fw-bold mb-1">Myanmar Textiles</h6>
-                    <p class="text-danger fw-bold small">Explore Collection</p>
+                    <h6 class="fw-bold mb-1 text-dark" style="font-family: 'PT Serif', serif;">{{ $cat->name }}</h6>
+                    <a href="{{ url('/category/'.$cat->id) }}" class="text-decoration-none">
+                        <p class="text-danger fw-bold small mb-0">Explore Collection</p>
+                    </a>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-6 col-lg-3">
-            <div class="product-card">
-                <div class="product-img-container rounded shadow-sm">
-                      <img src="{{ asset('frontend_assets/images/about1.jpg')}}" class="img-fluid zoom-img" alt="Handicraft">
-                    <div class="product-overlay">
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                </div>
-                <div class="product-info mt-3 text-center">
-                    <h6 class="fw-bold mb-1">Teak Woodwork</h6>
-                    <p class="text-danger fw-bold small">Explore Collection</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-            <div class="product-card">
-                <div class="product-img-container rounded shadow-sm">
-                     <img src="{{ asset('frontend_assets/images/about1.jpg')}}" class="img-fluid zoom-img" alt="Handicraft">
-                    <div class="product-overlay">
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                </div>
-                <div class="product-info mt-3 text-center">
-                    <h6 class="fw-bold mb-1">Handmade Ceramics</h6>
-                    <p class="text-danger fw-bold small">Explore Collection</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-            <div class="product-card">
-                <div class="product-img-container rounded shadow-sm">
-                     <img src="{{ asset('frontend_assets/images/about1.jpg')}}" class="img-fluid zoom-img" alt="Handicraft">
-                    <div class="product-overlay">
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#" class="overlay-btn"><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                </div>
-                <div class="product-info mt-3 text-center">
-                    <h6 class="fw-bold mb-1">Traditional Jewelry</h6>
-                    <p class="text-danger fw-bold small">Explore Collection</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="text-center mt-5">
-        <a href="{{ url('/categories') }}" class="btn btn-outline-danger px-5 py-2 fw-bold rounded-pill shadow-sm view-all-btn">
-            View All Categories <i class="fa-solid fa-arrow-right ms-2"></i>
-        </a>
+        @endforeach
     </div>
 </section>
-
 <!--new arrival item start-->
     {{-- <div class="container my-5">
         <h4 class="mb-0 pb-0">New Arrival Items</h4>
@@ -392,7 +294,7 @@
 <!-- end subscribe -->
 
 
-<!--Review-->
+
 {{-- Review Section --}}
 <section class="container my-5 pb-5">
     <div class="text-center mb-5">

@@ -34,16 +34,29 @@
             <ul class="navbar-nav ms-auto align-items-center">
                 <li class="nav-item"><a href="{{ route('homepage') }}" class="nav-link ms-3 fw-medium nav_hover">Home</a></li>
 
-                <li class="nav-item dropdown">
-                    <a href="" class="nav-link dropdown-toggle ms-3 fw-medium nav_hover" data-bs-toggle="dropdown">
-                        Products
-                    </a>
-                    <ul class="dropdown-menu border-0 shadow-sm">
-                        <li><a class="dropdown-item nav_hover" href="#">Women</a></li>
-                        <li><a class="dropdown-item nav_hover" href="#">Men</a></li>
-                        <li><a class="dropdown-item nav_hover" href="#">Kid</a></li>
-                    </ul>
-                </li>
+        {{-- Product --}}
+        <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle ms-3 fw-medium nav_hover" data-bs-toggle="dropdown">
+                Products
+            </a> 
+
+            <ul class="dropdown-menu border-0 shadow-sm">
+                {{-- THE LOOP  --}}
+                @foreach($categories as $cat)
+                    <li>
+                        <a class="dropdown-item nav_hover" href="{{ route('frontend.category', $cat->id) }}">
+                            {{ $cat->name }}
+                        </a>
+                    </li>
+                @endforeach
+                
+                {{-- Show a 'View All' option --}}
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item nav_hover text-danger" href="{{ route('homepage') }}">View All Crafts</a></li>
+            </ul>
+        </li>
+
+
 
                 <li class="nav-item"><a href="{{ route('aboutpage') }}" class="nav-link ms-3 fw-medium nav_hover">About</a></li>
                 <li class="nav-item"><a href="{{ route('contactpage') }}" class="nav-link ms-3 fw-medium nav_hover">Contact</a></li>
@@ -61,7 +74,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm">
                             @if(Auth::user()->hasRole('Admin'))
-                                <li><a class="dropdown-item small" href="/roles"><i class="fa-solid fa-gauge-high me-2"></i>Admin Dashboard</a></li>
+                                <li><a class="dropdown-item small" href="{{ route('table') }}"><i class="fa-solid fa-gauge-high me-2"></i>Admin Dashboard</a></li>
                                 <li><hr class="dropdown-divider"></li>
                             @endif
                             <li>
