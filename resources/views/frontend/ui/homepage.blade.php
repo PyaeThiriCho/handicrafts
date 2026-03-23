@@ -57,7 +57,7 @@
                 <div class="product-img-container rounded position-relative overflow-hidden">
                     
                     {{-- IMAGE PATH --}}
-                    <img src="{{ asset('storage/' . $product->image) }}" 
+                    <img src="{{ asset($product->image) }}" 
                     class="img-fluid zoom-img w-100" 
                     alt="{{ $product->name }}"
                     style="height: 250px; object-fit: cover;"
@@ -92,45 +92,98 @@
 
 
 {{-- Explore By Categories --}}
-<section class="container my-5 pb-5">
+<section class="container my-5 pb-5" id="categories">
     <div class="text-center mb-5">
         <h2 class="fw-bold" style="font-family: 'PT Serif', serif;">Explore By Categories</h2>
         <hr class="divided mx-auto" style="width: 50px; border-top: 3px solid red;">
     </div>
 
-    <div class="row g-4">
+    @php
+        /** * Mapping Category IDs to the specific high-quality images 
+         * seen in your latest screenshots
+         */
+        $staticImages = [
+            1 => 'images/lacquerware/photo (1).jpg',     // Lacquerware
+            2 => 'images/umbrellas/photo (2).jpg',       // Traditional Umbrella
+            3 => 'images/puppets/photo (3).jpg',         // Traditional Puppets
+            4 => 'images/pottery/photo (4).jpg',         // Pottery
+            5 => 'images/bamboo-basket/photo (5).jpg',   // Bamboo Basketry
+        ];
+    @endphp
+
+    <div class="row g-4 justify-content-center">
         @foreach($categories as $cat)
         <div class="col-md-6 col-lg-3">
-            <div class="product-card border-0 shadow-sm rounded p-2 bg-white">
-                <div class="product-img-container rounded position-relative overflow-hidden">
+            <div class="product-card border-0 shadow-sm rounded p-3 bg-white h-100 text-center">
+                <div class="product-img-container rounded position-relative overflow-hidden mb-3" style="background: #ffffff;">
                     
-                    {{-- IMAGE PATH --}}
-                    <img src="{{ asset('frontend_assets/images/' . Str::slug($cat->name) . '.jpg') }}" 
+                    {{-- Using contain ensures products like Puppets and Umbrellas aren't cropped --}}
+                    <img src="{{ asset($staticImages[$cat->id] ?? 'frontend_assets/images/about1.jpg') }}" 
                          class="img-fluid zoom-img w-100" 
                          alt="{{ $cat->name }}"
-                         style="height: 200px; object-fit: cover;"
+                         style="height: 220px; object-fit: contain; padding: 10px;"
                          onerror="this.onerror=null;this.src='{{ asset('frontend_assets/images/about1.jpg') }}';">
-                    
+                                    
+                    {{-- Red Square Eye Icon Overlay seen in your working UI --}}
                     <div class="product-overlay d-flex align-items-center justify-content-center">
                         <a href="{{ url('/category/'.$cat->id) }}" 
-                           class="overlay-btn bg-danger text-white border-0 d-flex align-items-center justify-content-center" 
-                           style="width: 45px; height: 45px; border-radius: 5px; transition: 0.3s;">
+                           class="overlay-btn bg-danger text-white border-0 d-flex align-items-center justify-content-center shadow" 
+                           style="width: 45px; height: 45px; border-radius: 8px; transition: 0.3s;">
                             <i class="fa-solid fa-eye"></i>
                         </a>
                     </div>
                 </div>
 
-                <div class="product-info mt-3 text-center">
-                    <h6 class="fw-bold mb-1 text-dark" style="font-family: 'PT Serif', serif;">{{ $cat->name }}</h6>
-                    <a href="{{ url('/category/'.$cat->id) }}" class="text-decoration-none">
-                        <p class="text-danger fw-bold small mb-0">Explore Collection</p>
+                <div class="product-info mt-2">
+                    <h6 class="fw-bold mb-1 text-dark" style="font-family: 'PT Serif', serif; font-size: 1.15rem;">
+                        {{ $cat->name }}
+                    </h6>
+                    <a href="#" class="text-decoration-none">
+                        <p class="text-danger fw-bold small mb-0" style="letter-spacing: 1px; font-size: 0.75rem;">
+                            EXPLORE COLLECTION
+                        </p>
                     </a>
                 </div>
             </div>
         </div>
         @endforeach
     </div>
+
+   {{-- VIEW ALL CRAFTS BUTTON --}}
+    <div class="text-center mt-5 mb-3">
+        <style>
+            .btn-view-all {
+                border-radius: 30px;
+                letter-spacing: 1.5px;
+                background-color: #d9534f; /* Matches your red theme */
+                border: 2px solid transparent;
+                transition: all 0.4s ease;
+                font-family: 'PT Serif', serif; /* Matches your section headers */
+                box-shadow: 0 4px 15px rgba(217, 83, 79, 0.2);
+            }
+
+            .btn-view-all:hover {
+                background-color: transparent;
+                color: #d9534f !important;
+                border-color: #d9534f;
+                transform: translateY(-3px); /* Subtle lift animation */
+                box-shadow: 0 6px 20px rgba(217, 83, 79, 0.4);
+            }
+
+            .btn-view-all:active {
+                transform: translateY(-1px);
+            }
+        </style>
+
+        <a href="#" 
+        class="btn btn-danger px-5 py-2 fw-bold btn-view-all shadow-sm text-uppercase">
+            View All Crafts
+        </a>
+    </div>
+
 </section>
+
+
 <!--new arrival item start-->
     {{-- <div class="container my-5">
         <h4 class="mb-0 pb-0">New Arrival Items</h4>
@@ -279,14 +332,18 @@
             <div class="col-12 col-md-6 my-2 order-1 order-md-0 animate-on-scroll">
                 <h2 class="fw-bold mb-3" style="font-family: 'PT Serif', serif;">Stay in the Loop</h2>
                 <p class="mb-4 opacity-75">Join our community to receive updates on new Myanmar handicraft collections, artisan stories, and exclusive offers.</p>
-                <div class="input-group mb-3 bg-white p-1 rounded-pill">
-                    <input type="email" class="form-control border-0 px-4" placeholder="Enter your email" style="box-shadow: none;">
+                <div class="input-group mb-3 bg-white p-1 rounded-pill" style="max-width: 450px;">
+                    <input type="email" class="form-control border-0 px-4" placeholder="Enter your email" style="box-shadow: none; border-radius: 30px 0 0 30px;">
                     <button class="btn btn-dark rounded-pill px-4 fw-bold" type="button">Subscribe</button>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 my-2 text-center text-md-end order-0 order-md-1">
-                <img src="{{ asset('frontend_assets/images/photo_2026-03-11_21-05-52.jpg')}}" alt="Subscribe" class="img-fluid w-75 rounded-3 floating-img">
+                {{-- Changed w-75 to w-50 and added max-width for better scaling --}}
+                <img src="{{ asset('frontend_assets/images/photo_2026-03-11_21-05-52.jpg')}}" 
+                     alt="PSM Craft House Logo" 
+                     class="img-fluid rounded-3 floating-img" 
+                     style="width: 50%; max-width: 280px;">
             </div>
         </div>
     </div>

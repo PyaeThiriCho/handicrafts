@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-6 col-md-9">
                 <small>
-                    <span class="me-3 d-none d-md-inline-block"><i class="fa-solid fa-location-dot me-1"></i>Mandalay, Myotha</span>
+                    <span class="me-3 d-none d-md-inline-block"><i class="fa-solid fa-location-dot me-1"></i>Mandalay,Myanmar</span>
                     <span><i class="fa-solid fa-phone-volume me-1"></i>09-255409595</span>
                 </small>
             </div>

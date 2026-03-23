@@ -64,12 +64,12 @@
         </a>
     </li>
 
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-fw fa-pen-nib"></i>
             <span>Authors / Artisans</span>
         </a>
-    </li>
+    </li> --}}
 
     <hr class="sidebar-divider" style="border-top: 1px solid rgba(255,255,255,0.15);">
 

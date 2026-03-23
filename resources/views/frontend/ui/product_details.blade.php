@@ -7,7 +7,7 @@
             {{-- Drawing the handicraft image from storage --}}
             <div class="col-md-6">
                 <img class="card-img-top mb-5 mb-md-0 shadow rounded" 
-                     src="{{ asset('storage/' . $product->image) }}" 
+                    src="{{ asset($product->image) }}" 
                      alt="{{ $product->name }}" 
                      style="width: 100%; height: auto; object-fit: cover;"
                      onerror="this.onerror=null;this.src='{{ asset('frontend_assets/images/about1.jpg') }}';">
@@ -35,6 +35,7 @@
 </section>
 
 {{-- Related items section --}}
+{{-- Related items section --}}
 <section class="py-5 bg-light">
     <div class="container px-4 px-lg-5 mt-5">
         <h2 class="fw-bolder mb-4" style="font-family: 'PT Serif', serif;">Related Products</h2>
@@ -43,8 +44,10 @@
             @forelse($relatedProducts as $related)
             <div class="col mb-5">
                 <div class="card h-100 border-0 shadow-sm rounded">
+                    
+                    {{-- FIXED: Changed $product->image to $related->image --}}
                     <img class="card-img-top" 
-                         src="{{ asset('storage/' . $related->image) }}" 
+                         src="{{ asset($related->image) }}" 
                          alt="{{ $related->name }}" 
                          style="height: 200px; object-fit: cover;"
                          onerror="this.onerror=null;this.src='{{ asset('frontend_assets/images/about1.jpg') }}';">
