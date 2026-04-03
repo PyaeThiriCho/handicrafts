@@ -27,7 +27,15 @@ Route::get('/contact',[App\Http\Controllers\FrontendController::class, 'contact'
 //  to loop specific crafts like Pottery or Wood Carvings
 Route::get('/category/{id}', [FrontendController::class, 'showCategory'])->name('frontend.category');
 Route::get('/product/{id}', [FrontendController::class, 'showProduct'])->name('frontend.product.details');
-   
+
+//for all products
+Route::get('/all-crafts', [FrontendController::class, 'allProducts'])->name('frontend.all.products');
+
+
+
+
+
+
 // 1. LOGIN ROUTES
 // This shows the login form
 Route::get('/login', [FrontendController::class, 'login'])->name('login');

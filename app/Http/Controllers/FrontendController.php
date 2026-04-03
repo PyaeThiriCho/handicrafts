@@ -34,7 +34,7 @@ class FrontendController extends Controller
         // Only fetch products belonging to this category
         $products = Product::where('category_id', $id)->get();
 
-        return view('frontend.ui.homepage', compact('categories', 'products', 'category'));
+        return view('frontend.ui.all_products', compact('categories', 'products', 'category'));
     }
 
     public function showProduct($id)
@@ -51,6 +51,26 @@ class FrontendController extends Controller
         return view('frontend.ui.product_details', compact('product', 'categories', 'relatedProducts'));
     }
 
+    public function allProducts(Request $request)
+    {
+        $categories = Category::all();
+        
+        // 1. Start the query
+        $query = Product::query();
+
+        // 2. Check if a category ID was passed in the URL (e.g., ?category=1)
+        if ($request->has('category') && $request->category != '') {
+            $query->where('category_id', $request->category);
+        }
+
+        $products = $query->latest()->paginate(12);
+
+        // 3. Return the view with the selected category ID so we can highlight it in the select box
+        return view('frontend.ui.all_products', compact('categories', 'products'));
+
+    }
+
+    
     public function about()
     {
         $categories = Category::all();

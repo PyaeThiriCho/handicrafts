@@ -125,20 +125,20 @@
                          onerror="this.onerror=null;this.src='{{ asset('frontend_assets/images/about1.jpg') }}';">
                                     
                     {{-- Red Square Eye Icon Overlay seen in your working UI --}}
-                    <div class="product-overlay d-flex align-items-center justify-content-center">
-                        <a href="{{ url('/category/'.$cat->id) }}" 
+                    {{-- <div class="product-overlay d-flex align-items-center justify-content-center">
+                        <a href="#"
                            class="overlay-btn bg-danger text-white border-0 d-flex align-items-center justify-content-center shadow" 
                            style="width: 45px; height: 45px; border-radius: 8px; transition: 0.3s;">
                             <i class="fa-solid fa-eye"></i>
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="product-info mt-2">
                     <h6 class="fw-bold mb-1 text-dark" style="font-family: 'PT Serif', serif; font-size: 1.15rem;">
                         {{ $cat->name }}
                     </h6>
-                    <a href="#" class="text-decoration-none">
+                    <a href="{{ route('frontend.category', $cat->id) }}" class="text-decoration-none">
                         <p class="text-danger fw-bold small mb-0" style="letter-spacing: 1px; font-size: 0.75rem;">
                             EXPLORE COLLECTION
                         </p>
@@ -175,7 +175,7 @@
             }
         </style>
 
-        <a href="#" 
+        <a href="{{ route('frontend.all.products') }}"
         class="btn btn-danger px-5 py-2 fw-bold btn-view-all shadow-sm text-uppercase">
             View All Crafts
         </a>
