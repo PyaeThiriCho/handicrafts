@@ -71,9 +71,9 @@
                             <i class="fa-solid fa-eye"></i>
                         </a>
                         
-                        <a href="#" class="overlay-btn mx-1">
+                        <button onclick="addItem('{{$product->id}}', '{{$product->product_name}}', '{{$product->price}}', '{{asset($product->image)}}')" class="overlay-btn">
                             <i class="fa-solid fa-cart-shopping"></i>
-                        </a>
+                        </button>
                     </div>
                 </div>
 

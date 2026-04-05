@@ -29,15 +29,44 @@
 </head>
 <body>
     
-{{-- Navigation --}}
-@include('frontend.parts.navbar')
+    {{-- Navigation --}}
+    @include('frontend.parts.navbar')
 
 
-@yield('content')
+    @yield('content')
+
+    {{-- Shopping Cart Modal --}}
+    {{-- <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content shadow border-0">
+                <div class="modal-header bg-white border-bottom">
+                    <h5 class="modal-title fw-bold" style="font-family: 'Noto Serif', serif;">
+                        <i class="fa-solid fa-cart-shopping me-2 text-danger"></i>Shopping Cart
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="cartItems" style="max-height: 350px; overflow-y: auto;">
+                    </div>
+                <div class="modal-footer border-0 flex-column align-items-stretch">
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="h5 mb-0 fw-bold">Total:</span>
+                        <span class="h5 mb-0 fw-bold text-danger"><span id="cartTotal">0</span> MMK</span>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a href="#" class="btn btn-danger py-2 fw-bold">PROCEED TO CHECKOUT</a>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Continue Shopping</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+
+
 
     <!-- footer -->
     @include('frontend.parts.footer')
-    
+        
 
 
 

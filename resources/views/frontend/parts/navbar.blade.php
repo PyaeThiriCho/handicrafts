@@ -92,9 +92,9 @@
 
                 {{-- ICONS --}}
                 <li class="nav-item">
-                    <a href="" class="nav-link ms-3">
+                    <a href="{{ route('cartpage') }}" class="nav-link ms-3">
                         <i class="fa-solid fa-cart-shopping fa-lg"></i>
-                        <span class="cart_noti">0</span>
+                        <span id="cartCount" class="cart_noti">0</span>
                     </a>
                 </li>
                 

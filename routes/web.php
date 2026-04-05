@@ -31,7 +31,8 @@ Route::get('/product/{id}', [FrontendController::class, 'showProduct'])->name('f
 //for all products
 Route::get('/all-crafts', [FrontendController::class, 'allProducts'])->name('frontend.all.products');
 
-
+//Cart
+Route::get('/cart',[App\Http\Controllers\CartController::class, 'showcart'])->name('cartpage');
 
 
 
