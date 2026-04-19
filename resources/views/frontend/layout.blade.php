@@ -89,6 +89,50 @@
 
     <!--icon-->
     <script src="{{ asset('frontend_assets/font/js/all.min.js') }}"></script>
+
+    {{-- notification --}}
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if there is a 'message' sent from the Laravel Controller
+            @if(session('message'))
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top', // This makes it "drop" from the top of the screen
+                    showConfirmButton: false,
+                    timer: 4000,
+                    timerProgressBar: true,
+                    customClass: {
+                        popup: 'system-notification shadow-lg mt-2'
+                    }
+                });
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'PSM Craft House',
+                    text: "{{ session('message') }}"
+                });
+
+                // Vibrate the phone (Works on Android)
+                if (window.navigator.vibrate) {
+                    window.navigator.vibrate([200, 100, 200]);
+                }
+            @endif
+        });
+    </script>
+
+    <style>
+        /* This makes the notification look like a sleek phone pop-up */
+        .system-notification {
+            border-radius: 50px !important;
+            background: #333 !important;
+            color: #fff !important;
+            padding: 10px 20px !important;
+        }
+    </style>
+
 </body>
 </html>
 

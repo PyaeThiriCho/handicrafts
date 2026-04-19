@@ -34,6 +34,24 @@ Route::get('/all-crafts', [FrontendController::class, 'allProducts'])->name('fro
 //Cart
 Route::get('/cart',[App\Http\Controllers\CartController::class, 'showcart'])->name('cartpage');
 
+//checkstock
+Route::post('/check-stock', [App\Http\Controllers\CartController::class, 'checkStock'])->name('cart.checkStock');
+
+
+
+
+// Step 1: Checkout Form (Address & Payment Selection)
+Route::get('/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('checkout.index');
+
+// Step 2: The Summary (Review before final save)
+Route::post('/summary', [App\Http\Controllers\CartController::class, 'summary'])->name('checkout.summary');
+
+// Step 3: Place Order (Saves to Database)
+Route::post('/place-order', [App\Http\Controllers\CartController::class, 'placeOrder'])->name('order.place');
+
+// Step 4: Success / Slip Upload (Only for KPay/Wave)
+Route::get('/order-success/{order_id}', [App\Http\Controllers\CartController::class, 'orderSuccess'])->name('order.success');
+Route::post('/upload-payment', [App\Http\Controllers\CartController::class, 'uploadPayment'])->name('order.upload');
 
 
 
@@ -61,6 +79,5 @@ Route::resource('categories', App\Http\Controllers\CategoryController::class);
 Route::resource('products', App\Http\Controllers\ProductController::class);
 Route::resource('roles', App\Http\Controllers\RoleController::class);
 Route::resource('permissions', App\Http\Controllers\PermissionController::class);
-
 
 
