@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Order_Item;
 use App\Models\Product;
+use App\Mail\OrderPlaced;
+use Illuminate\Support\Facades\Mail;        
 use Illuminate\Support\Facades\DB;
 
 
@@ -82,13 +84,21 @@ class CartController extends Controller
     }
 
 
-    public function placeOrder() {
+    public function placeOrder() 
+    {
         $info = session('pending_order');
         $basket = session('psm_final_cart', []);
+
+        if (!$info) 
+        {
+        return redirect()->route('checkout')
+            ->with('error', 'Your session has expired. Please fill in your details again.');
+        }   
 
         $order = DB::transaction(function () use ($info, $basket) {
             $newOrder = Order::create([
                 'customer_name' => $info['customer_name'],
+                'email'          => $info['email'],
                 'phone' => $info['phone'],
                 'address' => $info['address'],
                 'total_amount' => collect($basket)->sum(fn($i) => $i['price'] * $i['item']),
@@ -109,9 +119,12 @@ class CartController extends Controller
         });
 
         session()->forget(['psm_final_cart', 'pending_order']);
-        //notification
+
+       // Send the email to the customer
+        Mail::to($order->email)->send(new OrderPlaced($order));
+
         return redirect()->route('order.success', $order->id)
-                     ->with('message', 'Order placed successfully! 🎉');
+                        ->with('message', 'Check your email for confirmation!');
     }
 
     public function orderSuccess($id) {

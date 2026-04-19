@@ -10,6 +10,11 @@
                     <label class="small fw-bold text-muted">Recipient Name</label>
                     <input type="text" name="customer_name" class="form-control bg-light border-0 py-2" required>
                 </div>
+
+                <div class="mb-3">
+                    <label class="small fw-bold mb-1">Email Address</label>
+                    <input type="email" name="email" class="form-control border-0 bg-light rounded-3" required>
+                </div>  
                 <div class="mb-3">
                     <label class="small fw-bold text-muted">Phone Number</label>
                     <input type="tel" name="phone" class="form-control bg-light border-0 py-2" required>

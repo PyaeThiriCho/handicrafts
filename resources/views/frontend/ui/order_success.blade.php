@@ -7,6 +7,9 @@
         <p class="text-muted">Order #{{ $order->id }} has been placed successfully.</p>
     </div>
 
+        <div class="alert alert-warning d-inline-block rounded-pill border-0 small py-1 px-3 mt-2" style="background-color: #fff3cd; color: #856404;">
+            <i class="fas fa-envelope me-1"></i> A confirmation email has been sent to your inbox.
+        </div>
     @if($order->payment_method != 'cod')
     <div class="card border-0 shadow-sm p-4 mx-auto mb-4" style="max-width: 400px; border-radius: 20px;">
         <p class="small fw-bold text-muted mb-2">Please transfer {{ number_format($order->total_amount) }} K to:</p>

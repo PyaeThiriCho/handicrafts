@@ -18,6 +18,7 @@
                                     <img src="{{ asset($item['image'] ?? 'images/default.png') }}" class="rounded-2" style="width: 70px; height: 70px; object-fit: cover;">
                                 </div>
                                 <div>
+                                    <div class="fw-bold">{{ $item['name'] ?? 'Product' }}</div>
                                     <div class="small text-muted">{{ $item['item'] }} x {{ number_format($item['price']) }} K</div>
                                 </div>
                             </div>
@@ -41,17 +42,20 @@
                     </div>
 
                     <div class="mt-4 pt-3 border-top">
-                        <div class="mb-3">
-                            <label class="small text-muted mb-1">Customer Note</label>
-                            <textarea class="form-control border-0 bg-light" rows="2" placeholder="Write your note here..."></textarea>
+                        <h6 class="fw-bold small mb-2">Customer Info</h6>
+                        <div class="text-muted small">
+                            <div class="fw-bold text-dark">{{ $customerInfo['customer_name'] ?? 'Pyae Thiri Cho' }}</div>
+                            {{-- Added Email Display --}}
+                            <div class="text-primary mb-1"><i class="fas fa-envelope me-1"></i> {{ $customerInfo['email'] ?? 'pyaethiricho4@gmail.com' }}</div>
+                            <div><i class="fas fa-phone me-1"></i> {{ $customerInfo['phone'] ?? '09255409595' }}</div>
+                            <div><i class="fas fa-map-marker-alt me-1"></i> {{ $customerInfo['address'] ?? 'Pyin Oo Lwin' }}</div>
                         </div>
                     </div>
 
                     <div class="mt-4 pt-3 border-top">
-                        <h6 class="fw-bold small mb-2">Customer Info</h6>
-                        <div class="text-muted small">
-                            <div class="fw-bold text-dark">{{ $customerInfo['customer_name'] ?? 'Pyae Thiri Cho' }}, {{ $customerInfo['phone'] ?? '09255409595' }}</div>
-                            <div>{{ $customerInfo['address'] ?? 'Pyin Oo Lwin' }}</div>
+                        <div class="mb-3">
+                            <label class="small text-muted mb-1">Customer Note (Optional)</label>
+                            <textarea name="note" form="orderForm" class="form-control border-0 bg-light" rows="2" placeholder="Write your note here..."></textarea>
                         </div>
                     </div>
                 </div>
@@ -64,8 +68,11 @@
                     </a>
                 </div>
                 <div class="col-6">
-                    <form action="{{ route('order.place') }}" method="POST">
+                    {{-- Form with id for the textarea to link to --}}
+                    <form action="{{ route('order.place') }}" method="POST" id="orderForm">
                         @csrf
+                        {{-- Hidden inputs to pass data to controller --}}
+                        <input type="hidden" name="email" value="{{ $customerInfo['email'] ?? '' }}">
                         <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-bold shadow-sm" style="background-color: #6c9eff; border: none;">
                             Place Order
                         </button>
@@ -78,7 +85,6 @@
 </div>
 
 <style>
-    /* Styling to match PSM Theme */
     .form-control:focus {
         box-shadow: none;
         background-color: #f8f9fa;
