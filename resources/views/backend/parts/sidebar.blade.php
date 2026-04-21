@@ -30,6 +30,8 @@
             <i class="fas fa-fw fa-user-shield" style="color: #D4AF37;"></i>
             <span>User Management</span>
         </a>
+
+        
         <div id="collapseSecurity" class="collapse {{ Request::is('users*') || Request::is('roles*') || Request::is('permissions*') ? 'show' : '' }}" 
              aria-labelledby="headingSecurity" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded shadow">
@@ -46,6 +48,14 @@
         </div>
     </li>
 
+    <li class="nav-item {{ Request::is('admin/orders*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.orders.index') }}">
+            <i class="fas fa-fw fa-shopping-cart" style="color: #D4AF37;"></i>
+            <span>Order Management</span>
+        </a>
+    </li>
+
+    
     <hr class="sidebar-divider" style="border-top: 1px solid rgba(255,255,255,0.15);">
 
     <div class="sidebar-heading" style="color: rgba(255,255,255,0.6);">Inventory Management</div>
@@ -63,6 +73,8 @@
             <span>Products</span>
         </a>
     </li>
+
+    
 
     {{-- <li class="nav-item">
         <a class="nav-link" href="#">

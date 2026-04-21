@@ -51,7 +51,7 @@ class CartController extends Controller
 
         // If stock is perfect, save to session and proceed
         session(['psm_final_cart' => $cartItems]);
-        return redirect()->route('checkout.index');
+        return redirect()->route('checkout');
     }
 
     
@@ -130,6 +130,27 @@ class CartController extends Controller
     public function orderSuccess($id) {
         $order = Order::findOrFail($id);
         return view('frontend.ui.order_success', compact('order'));
+    }
+
+   public function uploadPayment(Request $request)
+    {
+        $request->validate([
+            'order_id' => 'required',
+            'screenshot' => 'required|image|max:2048'
+        ]);
+
+        $order = Order::findOrFail($request->order_id);
+
+        if ($request->hasFile('screenshot')) {
+            $path = $request->file('screenshot')->store('payments', 'public');
+            $order->update(['payment_screenshot' => $path]);
+
+            // SEND EMAIL TO ADMIN (YOU)
+            Mail::to('pyaethiricho4@gmail.com')->send(new \App\Mail\PaymentSlipUploaded($order));
+        }
+
+        // Still keep this so the CUSTOMER knows it worked on their end
+        return back()->with('message', 'Payment slip sent! We will verify it shortly.');
     }
 
 }

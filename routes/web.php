@@ -41,7 +41,7 @@ Route::post('/check-stock', [App\Http\Controllers\CartController::class, 'checkS
 
 
 // Step 1: Checkout Form (Address & Payment Selection)
-Route::get('/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('checkout.index');
+Route::get('/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('checkout');
 
 // Step 2: The Summary (Review before final save)
 Route::post('/summary', [App\Http\Controllers\CartController::class, 'summary'])->name('checkout.summary');
@@ -81,3 +81,10 @@ Route::resource('roles', App\Http\Controllers\RoleController::class);
 Route::resource('permissions', App\Http\Controllers\PermissionController::class);
 
 
+// Admin Order Management
+Route::prefix('admin')->group(function () {
+    Route::get('/orders', [App\Http\Controllers\OrderManagementController::class, 'index'])->name('admin.orders.index');
+    Route::get('/orders/{id}', [App\Http\Controllers\OrderManagementController::class, 'show'])->name('admin.orders.show');
+    Route::post('/orders/{id}/accept', [App\Http\Controllers\OrderManagementController::class, 'accept'])->name('admin.orders.accept');
+    Route::post('/orders/{id}/decline', [App\Http\Controllers\OrderManagementController::class, 'decline'])->name('admin.orders.decline');
+});
