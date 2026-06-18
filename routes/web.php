@@ -88,3 +88,5 @@ Route::prefix('admin')->group(function () {
     Route::post('/orders/{id}/accept', [App\Http\Controllers\OrderManagementController::class, 'accept'])->name('admin.orders.accept');
     Route::post('/orders/{id}/decline', [App\Http\Controllers\OrderManagementController::class, 'decline'])->name('admin.orders.decline');
 });
+
+
