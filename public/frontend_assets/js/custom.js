@@ -26,20 +26,33 @@ $(document).ready(function(){
     });
 
     // --- 2. SHOPPING CART LOGIC ---
-    
-    // Memory: Load existing items or start empty
+
+    // Detect if page was explicitly REFRESHED / RELOADED
+    let perfEntries = performance.getEntriesByType("navigation");
+    let isReload = perfEntries.length > 0 && perfEntries[0].type === "reload";
+
+    if (isReload) {
+        // Clear cart if user hit browser refresh
+        localStorage.removeItem('psm_cart_data');
+    }
+
+    // Load existing items or start empty
     let basket = JSON.parse(localStorage.getItem('psm_cart_data')) || [];
 
     // Global Function: Add Item
     window.addItem = function(id, name, price, image) {
         let search = basket.find((x) => x.id === id);
         if (search === undefined) {
-            basket.push({ id: id, name: name, price: price, image: image, item: 1 });
+            basket.push({ id: id, name: name, price: Number(price), image: image, item: 1 });
         } else {
             search.item += 1;
         }
         saveAndRender();
-        $('#cartModal').modal('show');
+        
+        // Show modal if it exists
+        if ($('#cartModal').length) {
+            $('#cartModal').modal('show');
+        }
     };
 
     // Global Function: Change Quantity (+ or -)
@@ -84,7 +97,7 @@ $(document).ready(function(){
                     <img src="${x.image}" width="50" height="50" style="object-fit:cover;" class="me-3 rounded">
                     <div class="flex-grow-1">
                         <h6 class="mb-0 fw-bold" style="font-size:0.85rem;">${x.name}</h6>
-                        <small class="text-muted">${x.price} MMK x ${x.item}</small>
+                        <small class="text-muted">${Number(x.price).toLocaleString()} MMK x ${x.item}</small>
                     </div>
                     <button class="btn btn-sm text-danger border-0" onclick="removeItem('${x.id}')">
                         <i class="fa-solid fa-trash-can"></i>
@@ -99,7 +112,7 @@ $(document).ready(function(){
             cartTotal.innerHTML = totalAmount.toLocaleString();
         }
 
-        // 4. Update the Full Cart Page (if the user is on /cart)
+        // 4. Update the Full Cart Page (if user is on /cart)
         if (typeof renderFullCartPage === "function") {
             renderFullCartPage();
         }

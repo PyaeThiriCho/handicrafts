@@ -1,49 +1,50 @@
 @extends('frontend.layout')
 @section('content')
 
-<div class="container-fluid bg-light py-5 mb-5">
+<div class="container-fluid py-5 mb-5 reveal" style="background-color: var(--bg-canvas);">
     <div class="container text-center">
-        <h1 class="display-5 fw-bold" style="font-family: 'PT Serif', serif;">Get In Touch</h1>
+        <span class="text-uppercase small fw-bold text-brand" style="letter-spacing: 2px;">We'd Love To Hear From You</span>
+        <h1 class="display-5 fw-bold mt-1" style="font-family: var(--font-serif);">Get In Touch</h1>
         <hr class="divided mx-auto">
-        <p class="text-muted">Have questions about our Myanmar handicrafts? We'd love to hear from you.</p>
+        <p style="color: var(--color-muted);">Have questions about our Myanmar handicrafts? We'd love to hear from you.</p>
     </div>
 </div>
 
 <div class="container mb-5">
     <div class="row g-5">
         <div class="col-lg-4">
-            <div class="d-flex flex-column gap-4">
-                <div class="card border-0 shadow-sm p-4 contact-info-card">
+            <div class="d-flex flex-column gap-4 reveal-group">
+                <div class="card border-0 shadow-sm p-4 contact-info-card reveal">
                     <div class="d-flex align-items-center">
-                        <div class="icon-box bg-danger-subtle text-danger me-3">
+                        <div class="icon-box me-3">
                             <i class="fa-solid fa-location-dot"></i>
                         </div>
                         <div>
-                            <h6 class="fw-bold mb-0">Location</h6>
+                            <h6 class="fw-bold mb-0" style="font-family: var(--font-serif);">Location</h6>
                             <p class="text-muted small mb-0">Mandalay, Myotha, Myanmar</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="card border-0 shadow-sm p-4 contact-info-card">
+                <div class="card border-0 shadow-sm p-4 contact-info-card reveal">
                     <div class="d-flex align-items-center">
-                        <div class="icon-box bg-danger-subtle text-danger me-3">
+                        <div class="icon-box me-3">
                             <i class="fa-solid fa-phone"></i>
                         </div>
                         <div>
-                            <h6 class="fw-bold mb-0">Call Us</h6>
+                            <h6 class="fw-bold mb-0" style="font-family: var(--font-serif);">Call Us</h6>
                             <p class="text-muted small mb-0">09-255409595</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="card border-0 shadow-sm p-4 contact-info-card">
+                <div class="card border-0 shadow-sm p-4 contact-info-card reveal">
                     <div class="d-flex align-items-center">
-                        <div class="icon-box bg-danger-subtle text-danger me-3">
+                        <div class="icon-box me-3">
                             <i class="fa-solid fa-envelope"></i>
                         </div>
                         <div>
-                            <h6 class="fw-bold mb-0">Email Us</h6>
+                            <h6 class="fw-bold mb-0" style="font-family: var(--font-serif);">Email Us</h6>
                             <p class="text-muted small mb-0">info@psmcrafthouse.com</p>
                         </div>
                     </div>
@@ -51,8 +52,8 @@
             </div>
         </div>
 
-        <div class="col-lg-8">
-            <div class="card border-0 shadow-lg p-4 p-md-5">
+        <div class="col-lg-8 reveal">
+            <div class="card border-0 shadow-lg p-4 p-md-5 transact-card">
                 <form action="#" method="POST">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -80,7 +81,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-danger w-100 py-3 fw-bold shadow-sm rounded-pill" type="submit">
+                            <button class="btn btn-brand w-100 py-3 fw-bold shadow-sm rounded-pill" type="submit">
                                 Send Message <i class="fa-solid fa-paper-plane ms-2"></i>
                             </button>
                         </div>

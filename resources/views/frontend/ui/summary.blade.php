@@ -1,15 +1,18 @@
 @extends('frontend.layout')
 
 @section('content')
-<div class="container py-5" style="background-color: #fcf6e9; min-height: 100vh;">
-    <div class="row justify-content-center">
+<div class="container py-5" style="background-color: var(--bg-canvas); min-height: 100vh;">
+    <div class="row justify-content-center reveal">
         <div class="col-lg-8">
-            
-            <h3 class="text-center fw-bold mb-4" style="color: #4a3728;">Order Summary</h3>
 
-            <div class="card border-0 shadow-sm rounded-4 mb-4" style="background-color: #ffffff;">
+            <div class="text-center mb-4">
+                <span class="text-uppercase small fw-bold text-brand" style="letter-spacing: 2px;">Review & Confirm</span>
+                <h3 class="fw-bold mt-1" style="font-family: var(--font-serif); color: var(--color-dark);">Order Summary</h3>
+            </div>
+
+            <div class="card border-0 shadow-sm rounded-4 mb-4 transact-card" style="background-color: #ffffff;">
                 <div class="card-body p-4">
-                    
+
                     <div class="product-list mb-4">
                         @foreach($basket as $item)
                         <div class="d-flex align-items-center justify-content-between py-3 border-bottom">
@@ -18,25 +21,25 @@
                                     <img src="{{ asset($item['image'] ?? 'images/default.png') }}" class="rounded-2" style="width: 70px; height: 70px; object-fit: cover;">
                                 </div>
                                 <div>
-                                    <div class="fw-bold">{{ $item['name'] ?? 'Product' }}</div>
+                                    <div class="fw-bold" style="font-family: var(--font-serif);">{{ $item['name'] ?? 'Product' }}</div>
                                     <div class="small text-muted">{{ $item['item'] }} x {{ number_format($item['price']) }} K</div>
                                 </div>
                             </div>
-                            <div class="fw-bold" style="color: #2c3e50;">{{ number_format($item['price'] * $item['item']) }} K</div>
+                            <div class="fw-bold text-brand">{{ number_format($item['price'] * $item['item']) }} K</div>
                         </div>
                         @endforeach
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="fw-bold h5 mb-0">Total</span>
-                        <span class="fw-bold h5 mb-0 text-primary" style="color: #4c84ff !important;">
+                        <span class="fw-bold h5 mb-0 text-brand">
                             {{ number_format($total) }} K
                         </span>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <span class="text-muted small">Payment</span>
-                        <span class="badge border border-primary text-primary px-3 py-1 text-uppercase" style="font-size: 0.75rem;">
+                        <span class="badge px-3 py-1 text-uppercase" style="font-size: 0.75rem; border: 1px solid var(--color-primary); color: var(--color-primary); background: transparent;">
                             {{ $customerInfo['payment_method'] ?? 'KPAY' }}
                         </span>
                     </div>
@@ -45,8 +48,7 @@
                         <h6 class="fw-bold small mb-2">Customer Info</h6>
                         <div class="text-muted small">
                             <div class="fw-bold text-dark">{{ $customerInfo['customer_name'] ?? 'Pyae Thiri Cho' }}</div>
-                            {{-- Added Email Display --}}
-                            <div class="text-primary mb-1"><i class="fas fa-envelope me-1"></i> {{ $customerInfo['email'] ?? 'pyaethiricho4@gmail.com' }}</div>
+                            <div class="mb-1 text-brand"><i class="fas fa-envelope me-1"></i> {{ $customerInfo['email'] ?? 'pyaethiricho4@gmail.com' }}</div>
                             <div><i class="fas fa-phone me-1"></i> {{ $customerInfo['phone'] ?? '09255409595' }}</div>
                             <div><i class="fas fa-map-marker-alt me-1"></i> {{ $customerInfo['address'] ?? 'Pyin Oo Lwin' }}</div>
                         </div>
@@ -63,17 +65,15 @@
 
             <div class="row g-3">
                 <div class="col-6">
-                    <a href="{{ url()->previous() }}" class="btn btn-outline-dark w-100 rounded-pill py-2 fw-bold bg-white shadow-sm">
+                    <a href="{{ url()->previous() }}" class="btn btn-brand-outline w-100 rounded-pill py-2 fw-bold bg-white shadow-sm">
                         ← Back
                     </a>
                 </div>
                 <div class="col-6">
-                    {{-- Form with id for the textarea to link to --}}
                     <form action="{{ route('order.place') }}" method="POST" id="orderForm">
                         @csrf
-                        {{-- Hidden inputs to pass data to controller --}}
                         <input type="hidden" name="email" value="{{ $customerInfo['email'] ?? '' }}">
-                        <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-bold shadow-sm" style="background-color: #6c9eff; border: none;">
+                        <button type="submit" class="btn btn-brand w-100 rounded-pill py-2 fw-bold shadow-sm">
                             Place Order
                         </button>
                     </form>
@@ -83,14 +83,4 @@
         </div>
     </div>
 </div>
-
-<style>
-    .form-control:focus {
-        box-shadow: none;
-        background-color: #f8f9fa;
-    }
-    .btn-primary:hover {
-        background-color: #568efd !important;
-    }
-</style>
 @endsection

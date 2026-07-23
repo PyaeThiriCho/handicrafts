@@ -17,13 +17,18 @@
                     </div>
                 @endif
 
-                <form action="{{ route('categories.store') }}" method="POST">
+                <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf 
                     
                     <div class="form-group">
                         <label class="text-dark font-weight-bold" style="color: #8B0000 !important;">Craft Name</label>
                         <input name="categoryName" class="form-control border-danger shadow-sm" 
                                placeholder="e.g. Lacquerware" value="{{ old('categoryName') }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="text-dark font-weight-bold" style="color: #8B0000 !important;">Category Cover Image</label>
+                        <input type="file" name="categoryImage" class="form-control-file border-danger shadow-sm p-1 border rounded">
                     </div>
 
                     <div class="form-group">

@@ -12,108 +12,137 @@ class CraftSeeder extends Seeder
     {
         $craftData = [
             'Lacquerware' => [
-                'folder' => 'lacquerware',
+                'folder' => 'Lacquerware',
                 'items' => [
-                    ['Gold Leaf Bowl', 25000, 'Hand-painted with genuine 24k gold leaf from Mandalay.', 12],
-                    ['Vermillion Tray', 35000, 'A deep red traditional serving tray used for ceremonies.', 8],
-                    ['Bagan Jewelry Box', 18000, 'Engraved with classic dancing figure patterns.', 25],
-                    ['Teak Coaster Set', 12000, 'Water-resistant lacquer over solid teak wood bases.', 50],
-                    ['Royal Betel Box', 45000, 'An iconic multi-tier box once used by Burmese nobility.', 5],
-                    ['Etched Wine Glass', 22000, 'Modern shape blended with ancient etching techniques.', 15],
-                    ['Cylindrical Cup', 9000, 'Lightweight bamboo frame coated in high-gloss black sap.', 40],
-                    ['Square Tiffin', 55000, 'A rare four-story lunch carrier with intricate floral art.', 3],
-                    ['Floral Vase', 32000, 'Stunning centerpiece featuring the Kanote vine design.', 10],
-                    ['Antique Stand', 60000, 'Heavy-duty lacquer stand for supporting sacred offerings.', 2],
-                    ['Miniature Elephant', 15000, 'A symbolic souvenir representing strength and wisdom.', 100],
-                    ['Incense Burner', 28000, 'Heat-resistant lacquerware designed for spiritual use.', 20],
-                    ['Offering Bowl', 40000, 'Deep Hsun-ok style bowl used for temple donations.', 7],
-                    ['Trinket Dish', 8500, 'A small, colorful leaf-shaped dish for daily accessories.', 60],
-                    ['Black Gloss Jar', 27000, 'Polished with stone to achieve a mirror-like black finish.', 14],
-                    ['Premium Cabinet', 150000, 'Large teak storage unit fully encased in master-grade lacquer.', 1]
+                    ['Lacquer Teapot', 40000, 'Traditional black teapot with gold patterns.', 12],
+                    ['Gold Ring Box', 35000, 'Circular serving tray with gold leaf art.', 8],
+                    ['Betel Box', 18000, 'Traditional red multi-tier betel nut box.', 25],
+                    ['Tiffin Carrier', 20000, 'Classic black food carrier with handles.', 50],
+                    ['Offering Bowls', 30000, 'Glossy black bowls for temple donations.', 5],
+                    ['Crimson Bowls', 22000, 'Bright red lacquer bowls with smooth finish.', 15],
+                    ['Bangle Boxes', 15000, 'Small circular boxes with green and gold designs.', 40],
+                    ['Stemmed Bowl', 55000, 'High-standing traditional offering bowl.', 3],
+                    ['Patterned Box', 32000, 'Circular container with intricate flower art.', 10],
+                    ['Tiffin Food Carrier', 35000, 'Complete matching set of bowls and stands.', 2],
+                    ['Jewelry Box', 15000, 'Small luxury box with gold floral designs.', 100],
+                    ['Tissue Box', 28000, 'Square tissue holder with traditional art.', 20],
+                    ['Pedestal Cup', 40000, 'Unique lacquer cup on a high stand.', 7],
+                    ['Dining Bowl', 15000, 'Simple dark lacquer bowl for daily meals.', 60],
+                    ['Glossy Cup', 27000, 'Decorative cup with gold-leaf detailing.', 14],
+                    ['Storage Jar', 80000, 'Large red lacquer pot with a tight lid.', 1]
                 ]
             ],
+
+        'Handmade Bag Set' => [
+            'folder' => 'handmade-bags',
+            'items' => [
+                ['Classic Rattan Tote', 35000, 'Handcrafted in Bagan from premium natural rattan, this classic open-top tote features a sturdy vertical weave perfect for daily use.', 15],
+                ['Round Handle Straw Bag', 28000, 'Originating from Inle Lake, this charming straw bag features a unique rounded handle decorated with handmade fabric flowers and tassels.', 12],
+                ['Woven Envelope Clutch', 18000, 'Handwoven in Bago from fine bamboo strips, this elegant envelope clutch is finished with a traditional wooden button closure.', 20],
+                ['Textured Bag', 22000, 'Made in Yangon from palm leaves, this textured bag features a beautifully patterned front flap.', 18],
+                ['Slim Straw Wallet', 15000, 'Crafted in Pathein from durable woven straw, this slim zip-around wallet comes with a convenient wristlet strap and colorful tassel.', 25],
+                ['Ribbon-Tied Handbag', 32000, 'Hand-basketed in Bagan using rattan, this cute handbag features a soft linen lining that ties into a decorative bow.', 10],
+                ['Vertical Crossbody Case', 20000, 'Designed in Bagan using strong woven rattan and genuine leather, this vertical crossbody phone pouch keeps your essentials secure.', 14],
+                ['Circular Crossbody Bag', 27000, 'Handwoven in Pakokku with a beautiful starburst rattan pattern, this trendy round bag features a classic leather strap.', 16],
+                ['3-Piece Nesting Baskets', 65000, 'Handcrafted in Bago from dark-stained woven seagrass, this set of three nesting storage baskets features matching lids and handles.', 8],
+                ['Floral Burlap Tote', 30000, 'Made in Shan State from eco-friendly burlap jute, this rustic tote features wooden handles and beautiful hand-embroidered white flowers.', 12],
+                ['Daisy Linen Tote', 29000, 'Tailored in Mandalay from soft, lightweight cream linen, this simple shoulder bag is decorated with hand-stitched daisy embroidery.', 15],
+                ['Elephant Motif Clutch', 50000, 'Hand-stitched in Inle from premium velvet fabric and wood, this traditional clutch features elegant embroidered golden elephant designs.', 10],
+                ['Floral Patchwork Tote', 38000, 'Crafted in Amarapura from durable canvas and leather, this colorful tote bag features detailed floral patchwork embroidery.', 7],
+                ['Daisy Burlap Bag', 31000, 'Handwoven in Monywa from natural burlap fiber, this sturdy handbag is decorated with a sweet, hand-stitched white wildflower pattern.', 11],
+                ['Pearl-Handle Rattan Bag', 40000, 'Made in Bagan from polished natural rattan, this elegant square basket bag is elevated by a stylish faux-pearl handle.', 6],
+                ['2-Piece Miniature Baskets', 30000, 'Hand-braided in Pyin Oo Lwin from light straw, this set of two miniature gift baskets features delicate paper flower accents.', 18],
+            ]
+        ],
+
+
+
+
+
+
+
             'Traditional Umbrella' => [
                 'folder' => 'umbrella',
                 'items' => [
-                    ['Pathein Silk Sunshade', 18000, 'The original Pathein design made with premium yellow silk.', 20],
-                    ['Monk Red Parasol', 12000, 'A sturdy, oiled-cotton umbrella used by forest monks.', 35],
-                    ['Floral Hand-painted', 15000, 'Features delicate hand-painted orchids and jasmine.', 15],
-                    ['Wedding Gold Parasol', 35000, 'An ornate gold-thread umbrella for ceremonies.', 4],
-                    ['Garden Shade', 55000, 'A large-scale outdoor umbrella with a bamboo tripod.', 6],
-                    ['Mini Decorative Hat', 5000, 'A cute souvenir version of the classic Pathein umbrella.', 120],
-                    ['Silk Dance Umbrella', 22000, 'Ultra-lightweight and flexible for stage dance.', 10],
-                    ['Boutique Sunshade', 28000, 'Modern pastel colors for a stylish summer look.', 12],
-                    ['Bamboo Handle Shade', 14000, 'Features a naturally curved, polished bamboo handle.', 18],
-                    ['Classic Cotton', 11000, 'Durable and waterproofed using traditional fruit resin.', 45],
-                    ['Orchid Pattern', 16500, 'Purple silk with white orchid prints, very popular.', 22],
-                    ['Royal White', 30000, 'Pure white silk used for religious festivals.', 5],
-                    ['Sunset Orange', 13500, 'Vibrant orange cotton that glows in sunlight.', 30],
-                    ['Forest Green', 13500, 'Deep green shade inspired by the Irrawaddy banks.', 30],
-                    ['Patterned Silk', 24000, 'Multi-colored weave featuring ethnic patterns.', 8],
-                    ['Artist Edition', 45000, 'Signed by a master artist from the Pathein workshop.', 2]
+                    ['Yellow Parasol', 30000, 'Classic yellow Pathein umbrella.', 20],
+                    ['Blue Parasol', 21000, 'Sky blue fabric umbrella with bamboo frame.', 35],
+                    ['Mini Umbrellas', 28000, 'Mix of small colorful souvenir umbrellas.', 15],
+                    ['Floral Shade Umbrella', 35000, 'Dark red oiled-cotton umbrella for monks.', 4],
+                    ['Green Parasol', 45000, 'Hand-painted flowers on a green base.', 6],
+                    ['Pink Parasol', 35000, 'Bright pink umbrella with floral borders.', 120],
+                    ['Brown Parasol', 38000, 'Minimalist umbrella in soft brown tones.', 10],
+                    ['Cream Parasol', 20000, 'Off-white fabric with traditional flower prints.', 12],
+                    ['Pastel Mix', 20000, 'Four small decorative pastel umbrellas.', 18],
+                    ['Pink & White Set', 20000, 'Two matching handmade festival umbrellas.', 45],
+                    ['Monk Umbrella', 25000, 'Deep crimson red cotton sunshade.', 22],
+                    ['Star Pattern Parasol', 25000, 'Features circular black and yellow designs.', 5],
+                    ['Red Parasol', 30000, 'Bright orange-red umbrella with bamboo handle.', 30],
+                    ['Festival Parasols', 20000, 'Multi-colored mini umbrellas for decoration.', 30],
+                    ['Gold Painted Parasol', 35000, 'Yellow umbrella with fine golden patterns.', 8],
+                    ['Purple Parasol', 45000, 'Striking purple shade for cultural festivals.', 2]
                 ]
             ],
             'Traditional Puppets' => [
                 'folder' => 'puppets',
                 'items' => [
-                    ['The Prince (Minthar)', 45000, 'Hand-carved teak puppet in a sequined silk costume.', 10],
-                    ['The Princess', 45000, 'Features real hair and intricate jewelry replicas.', 10],
-                    ['The Hermit', 38000, 'A wise character puppet dressed in brown robes.', 15],
-                    ['The Ogre (Belu)', 55000, 'A fearsome masked puppet with a wooden sword.', 6],
-                    ['The Monkey King', 32000, 'Highly flexible strings for acrobatic performance.', 12],
-                    ['The Alchemist', 40000, 'Dressed in red, representing ancient Burmese magic.', 8],
-                    ['The King', 65000, 'The most ornate puppet, wearing royal palace outfit.', 3],
-                    ['The Nat Spirit', 42000, 'Colorful spirit puppet used for traditional folk rituals.', 9],
-                    ['The Horse', 28000, 'A four-legged marionette with realistic galloping.', 20],
-                    ['The Elephant', 35000, 'Gray velvet puppet with a movable trunk and tusks.', 14],
-                    ['The Garuda', 48000, 'The mythical bird-man with hand-stitched feathers.', 5],
-                    ['The Villager', 20000, 'Simple wooden puppet representing daily village life.', 40],
-                    ['The Jester', 25000, 'A comedic character with a funny painted face.', 25],
-                    ['The Dragon', 50000, 'A long, multi-segment puppet for dramatic scenes.', 4],
-                    ['The Tiger', 27000, 'Striking velvet with a hand-painted face.', 18],
-                    ['The Brahma', 60000, 'The four-faced deity puppet used in Jataka plays.', 2]
+                    ['Ogre Puppet', 45000, 'Green masked ogre puppet with sequins.', 10],
+                    ['Princess Puppet', 45000, 'Beautiful princess puppet in a pink dress.', 10],
+                    ['Prince Puppet', 38000, 'Teak prince puppet in a yellow outfit.', 15],
+                    ['Jester Puppet', 55000, 'Funny comedic character in village clothes.', 6],
+                    ['Deity Puppet', 32000, 'Golden-crowned spirit puppet in royal clothes.', 12],
+                    ['Ministers Set', 40000, 'Two matching white-robed minister puppets.', 8],
+                    ['Garuda Puppet', 65000, 'Mythical bird-man puppet with colorful details.', 3],
+                    ['White Elephant', 42000, 'Sacred white fabric elephant string puppet.', 9],
+                    ['Dancer Puppet', 28000, 'Active marionette wearing a red silk outfit.', 20],
+                    ['Youth Puppet', 35000, 'Simple character puppet representing a village boy.', 14],
+                    ['Horse Puppet', 48000, 'Long jointed dragon puppet with silver scales.', 5],
+                    ['Festival Elephant', 20000, 'Green and red velvet elephant with movable trunk.', 40],
+                    ['Hermit Puppet', 25000, 'Wise old hermit puppet with brown robes.', 25],
+                    ['Archer Puppet', 50000, 'Warrior puppet holding a small wooden bow.', 44],
+                    ['Blue Elephant', 27000, 'Dark blue velvet elephant with gold embroidery.', 18],
+                    ['Dancers Pair', 60000, 'Two mini puppets showing court dancing styles.', 2]
                 ]
             ],
             'Pottery' => [
                 'folder' => 'pottery',
                 'items' => [
-                    ['Glazed Martaban Jar', 85000, 'Large-scale jar famous for water storage.', 4],
-                    ['Sagaing Water Pot', 12000, 'Porous clay that keeps water naturally cool.', 60],
-                    ['Clay Flower Vase', 8000, 'Simple, rustic vase with hand-pressed designs.', 45],
-                    ['Earthenware Cooker', 15000, 'Traditional charcoal stove made from reinforced clay.', 20],
-                    ['Incense Bowl', 6500, 'Small glazed bowl for burning temple incense.', 80],
-                    ['Pygmy Pot', 4500, 'A tiny decorative pot used for salt or spices.', 150],
-                    ['Village Water Jug', 11000, 'Classic shape with a narrow neck to prevent spills.', 30],
-                    ['Artisan Plate', 13000, 'Flat-fired clay plate with an emerald green glaze.', 40],
-                    ['Tea Set Base', 25000, 'A tray made of fired earth to hold your tea set.', 15],
-                    ['Decorative Tile', 5500, 'Hand-stamped tile featuring ancient Pyu symbols.', 100],
-                    ['Terracotta Bowl', 9000, 'Rich orange clay bowl, unglazed for a natural look.', 50],
-                    ['Hand-turned Pitcher', 17000, 'Balanced pouring vessel from Twante village.', 12],
-                    ['Antique Style Urn', 48000, 'Weathered look designed to mimic 18th-century art.', 5],
-                    ['Miniature Pot', 3500, 'A thumb-sized collector item for displays.', 200],
-                    ['Garden Planter', 22000, 'Heavy-duty pot with drainage holes for large plants.', 25],
-                    ['Sacred Water Vessel', 35000, 'Used for pouring water during merit ceremonies.', 10]
+                    ['Mini Painted Pots', 15000, 'Set of tiny hand-painted colorful pots.', 4],
+                    ['Clay Mixing Bowl', 15000, 'Wide unglazed clay bowl with handles.', 60],
+                    ['Footed Clay Bowl', 12000, 'Red terracotta bowl standing on three legs.', 45],
+                    ['Glazed Stand', 15000, 'Raised ceramic platter with dark patterns.', 20],
+                    ['Sagaing Water Pot', 6500, 'Traditional porous clay pot to keep water cool.', 80],
+                    ['Storage Urn', 7500, 'Heavy terracotta jar for water or grain storage.', 150],
+                    ['Cooking Pot', 15000, 'Round earthenware cooking pot with a lid.', 30],
+                    ['Polished Clay Urn', 18000, 'Smooth orange clay pot with a top handle.', 40],
+                    ['Water Pitcher', 25000, 'Tall clay jug with an elegant pouring shape.', 15],
+                    ['Green Ceramic Bowl', 5500, 'Celadon glazed bowl with fish engravings.', 100],
+                    ['Teapot Set', 9000, 'Mini decorative clay teapot and small cups.', 50],
+                    ['Assorted Mini Pots', 17000, 'Collection of various small unglazed dishes.', 12],
+                    ['Clay Stove Set', 48000, 'Miniature traditional village cooking stoves.', 5],
+                    ['Glossy Orange Urn', 13000, 'Smooth, round ceramic pot in bright orange.', 200],
+                    ['Ceremonial Vessel', 22000, 'Clay pitcher used for water pouring rituals.', 25],
+                    ['Stacked Mini Pots', 35000, 'Row of tiny thumb-sized collector pots.', 10]
                 ]
             ],
             'Bamboo Basketry' => [
-                'folder' => 'basketry',
+                'folder' => 'bamboo-basket',
                 'items' => [
-                    ['Woven Sun Hat', 6000, 'Breathable hat made from split bamboo.', 70],
-                    ['Rice Storage Basket', 14000, 'Tight weave designed to keep insects away.', 25],
-                    ['Fishing Trap (Hmyone)', 25000, 'Functional river trap with a one-way entry.', 12],
-                    ['Bamboo Floor Mat', 18000, 'Smooth, polished bamboo woven into a soft mat.', 30],
-                    ['Market Tote', 9500, 'Durable shopping bag with reinforced handles.', 55],
-                    ['Wall Hanging Decor', 15000, 'A star-shaped weave for decorating village homes.', 40],
-                    ['Fruit Tray', 7500, 'Wide, flat basket perfect for displaying fruits.', 65],
-                    ['Bamboo Lamp Shade', 22000, 'Creates beautiful patterns on the wall when lit.', 15],
-                    ['Seed Sorter', 8000, 'Large tray used by farmers to separate rice husks.', 50],
-                    ['Mini Trinket Box', 4000, 'Small box with a snug lid for storing treasures.', 90],
-                    ['Traditional Hand Fan', 3500, 'Lightweight fan used during the hot summer.', 200],
-                    ['Sturdy Picnic Basket', 30000, 'Double-lid design with strong wicker-style grip.', 10],
-                    ['Tea Leaf Sifter', 5500, 'Fine-mesh weave for sorting pickled tea leaves.', 40],
-                    ['Bamboo Stool', 32000, 'Strong seat made from thick, treated bamboo.', 8],
-                    ['Wine Bottle Holder', 12000, 'A spiral weave that fits most glass bottles.', 20],
-                    ['Delicate Jewelry Case', 10000, 'Soft bamboo interior to protect rings.', 35]
+                    ['Storage Basket', 20000, 'Sturdy round bamboo basket with thick rim.', 70],
+                    ['Square Box', 14000, 'Light-colored square woven basket with lid.', 25],
+                    ['Food Cover Dome', 25000, 'Woven mesh dome to protect food from insects.', 12],
+                    ['Picnic Basket', 18000, 'Woven carrying basket with a high handle.', 30],
+                    ['Stacked Boxes', 9500, 'Two matching round boxes stacked together.', 55],
+                    ['Market Tote Bag', 15000, 'Durable woven shopping bag with handles.', 40],
+                    ['Large Trunk', 12000, 'Big bamboo storage box with an attached lid.', 65],
+                    ['Lunch Basket', 22000, 'Two-tier round basket with a wooden carry frame.', 15],
+                    ['Oval Hand Basket', 20000, 'Wide open shopping basket with sturdy handle.', 50],
+                    ['Patterned Platter', 8000, 'Flat circular display tray with dark weaves.', 90],
+                    ['Fruit Tray', 10000, 'Shallow, lightweight bamboo basket for fruits.', 200],
+                    ['Serving Tray', 12000, 'Flat rectangular tray for serving drinks.', 10],
+                    ['Mini Gift Boxes', 5500, 'Three small square bamboo boxes with lids.', 40],
+                    ['3-Tier Stand', 32000, 'Vertical basket organizer with three round trays.', 8],
+                    ['Nested Bowls', 12000, 'Two flexible woven bowls fitting inside each other.', 20],
+                    ['Bamboo Food Dome', 10000, 'Light traditional woven hat for summer.', 35]
                 ]
             ],
         ];
@@ -128,11 +157,11 @@ class CraftSeeder extends Seeder
                         'category_id' => $category->id,
                         'price'       => $item[1],
                         'description' => $item[2],
-                        'stock'       => $item[3], // Unique stock from the array
-                        'image' => 'backend_assets/img/' . $categoryInfo['folder'] . '/photo (' . ($index + 1) . ').jpg',
+                        'stock'       => $item[3], 
+                        'image'       => 'backend_assets/img/' . $categoryInfo['folder'] . '/photo (' . ($index + 1) . ').jpg',
                     ]);
                 }
             }
         }
     }
-}
+}   

@@ -12,7 +12,6 @@ class ProductController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-
     {
         $query = Product::query();
 
@@ -27,7 +26,7 @@ class ProductController extends Controller
         }
 
         $products = $query->with('category')->latest()->paginate(15);
-        $categories = \App\Models\Category::all();
+        $categories = Category::all();
 
         return view('backend.product.list', compact('products', 'categories'));
     }
@@ -51,7 +50,7 @@ class ProductController extends Controller
             'productCategory' => 'required|exists:categories,id',
             'productPrice' => 'required|numeric',
             'productStock' => 'required|integer',
-            'productImage' => 'nullable|image|mimes:jpg,png,jpg,gif,svg|max:2048',
+            'productImage' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'productDescription' => 'nullable|min:5',
         ]);
 
@@ -101,7 +100,7 @@ class ProductController extends Controller
             'productCategory' => 'required|exists:categories,id',
             'productPrice' => 'required|numeric',
             'productStock' => 'required|integer',
-            'productImage' => 'nullable|image|mimes:jpg,png,jpg,gif,svg|max:2048',
+            'productImage' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'productDescription' => 'nullable|min:5',
         ]);
 
@@ -136,5 +135,23 @@ class ProductController extends Controller
         }
         $product->delete();
         return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+    }
+
+    /**
+     * Restock the product inventory from the low-stock modal.
+     */
+    public function restock(Request $request, $id)
+    {
+        $request->validate([
+            'stock' => 'required|integer|min:1',
+        ]);
+
+        $product = Product::findOrFail($id);
+        
+        // Increment the existing stock value
+        $product->stock = $product->stock + (int) $request->stock;
+        $product->save();
+
+        return redirect()->back()->with('success', 'Product stock updated successfully!');
     }
 }

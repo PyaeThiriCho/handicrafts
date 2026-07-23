@@ -11,11 +11,12 @@ class CategorySeeder extends Seeder
     {
         // Removed the 'slug' column to fix the Database error
         $categories = [
-            ['name' => 'Lacquerware'],
-            ['name' => 'Traditional Umbrella'],
-            ['name' => 'Traditional Puppets'],
-            ['name' => 'Pottery'],
-            ['name' => 'Bamboo Basketry'],
+            ['name' => 'Lacquerware', 'image' => 'lacquerware/photo (1).jpg'],
+            ['name' => 'Traditional Umbrella', 'image' => 'umbrella/photo (4).jpg'],
+            ['name' => 'Traditional Puppets', 'image' => 'puppets/photo (1).jpg'],
+            ['name' => 'Pottery', 'image' => 'pottery/photo (11).jpg'],
+            ['name' => 'Bamboo Basketry', 'image' => 'bamboo-basket/photo (6).jpg'],
+            ['name' => 'Handmade Bag Set', 'image' => 'handmade-bags/photo (2).jpg'], 
         ];
 
         foreach ($categories as $cat) {

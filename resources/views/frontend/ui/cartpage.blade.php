@@ -1,15 +1,15 @@
 @extends('frontend.layout')
 
 @section('content')
-<section class="py-5" style="background-color: #f8f9fa; min-height: 90vh;">
+<section class="py-5" style="background-color: var(--bg-canvas); min-height: 90vh;">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center reveal">
             <div class="col-lg-8 col-md-10">
-                
-                <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden transact-card">
                     <div class="card-header bg-white py-3 px-4 border-bottom d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0 fw-bold" style="font-family: 'Inter', sans-serif;">
-                            <i class="fas fa-shopping-cart me-2"></i> Shopping Cart
+                        <h5 class="mb-0 fw-bold" style="font-family: var(--font-serif);">
+                            <i class="fas fa-shopping-cart me-2 text-brand"></i> Shopping Cart
                         </h5>
                         <a href="{{ route('homepage') }}" class="btn-close" aria-label="Close"></a>
                     </div>
@@ -29,28 +29,28 @@
                         <div id="cartPageItems" class="p-4" style="max-height: 500px; overflow-y: auto;"></div>
 
                         <div id="emptyCartPage" class="text-center py-5" style="display: none;">
-                            <i class="fas fa-shopping-basket fa-3x text-muted mb-3"></i>
-                            <h4 class="text-muted">Your cart is empty</h4>
+                            <i class="fas fa-shopping-basket fa-3x mb-3" style="color: var(--color-gold);"></i>
+                            <h4 style="color: var(--color-muted); font-family: var(--font-serif);">Your cart is empty</h4>
                             <p class="small text-secondary">Add some handcrafted items to get started!</p>
-                            <a href="{{ route('homepage') }}" class="btn btn-outline-primary rounded-pill px-4 mt-2">Shop Now</a>
+                            <a href="{{ route('homepage') }}" class="btn btn-brand-outline rounded-pill px-4 mt-2">Shop Now</a>
                         </div>
                     </div>
 
                     <div id="cartPageSummary" class="card-footer bg-white p-4 border-top" style="display: none;">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <span class="h6 mb-0 fw-bold text-secondary">Total:</span>
-                            <span class="h5 mb-0 fw-bold text-dark" id="pageTotal">0 MMK</span>
+                            <span class="h5 mb-0 fw-bold text-brand" id="pageTotal">0 MMK</span>
                         </div>
-                        
+
                         <div class="d-flex justify-content-end gap-2">
-                            <button class="btn btn-secondary px-4 py-2 fw-semibold" style="background-color: #6c757d; border: none;" onclick="window.location.href='/'">
+                            <button class="btn px-4 py-2 fw-semibold" style="background-color: #6c757d; border: none; color:#fff;" onclick="window.location.href='/'">
                                 Continue Shopping
                             </button>
 
                             <form id="checkoutForm" action="{{ route('cart.checkStock') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="cart_data" id="cartDataInput">
-                                <button type="submit" class="btn btn-primary px-4 py-2 fw-semibold" style="background-color: #0d6efd; border: none;">
+                                <button type="submit" class="btn btn-brand px-4 py-2 fw-semibold">
                                     Checkout
                                 </button>
                             </form>
@@ -69,12 +69,13 @@
 </section>
 
 <style>
-    .cart-item-row { border: 1px solid #eee; border-radius: 8px; padding: 15px; margin-bottom: 15px; }
-    .qty-box-modal { border: 1px solid #ccc; border-radius: 4px; display: flex; align-items: center; overflow: hidden; }
-    .qty-btn-modal { background: #fff; border: none; padding: 0 10px; font-size: 1.2rem; color: #888; cursor: pointer; }
-    .qty-input-modal { width: 60px; text-align: center; border: none; border-left: 1px solid #ccc; border-right: 1px solid #ccc; font-weight: 500; font-size: 0.9rem; }
-    .delete-btn-rosiva { border: 1px solid #dc3545; color: #dc3545; background: transparent; border-radius: 4px; padding: 5px 10px; transition: 0.3s; }
-    .delete-btn-rosiva:hover { background: #dc3545; color: #fff; }
+    .cart-item-row { border: 1px solid rgba(107,29,47,0.1); border-radius: 12px; padding: 15px; margin-bottom: 15px; transition: box-shadow .3s ease; }
+    .cart-item-row:hover { box-shadow: 0 8px 20px -12px rgba(107,29,47,0.25); }
+    .qty-box-modal { border: 1px solid #ddd; border-radius: 6px; display: flex; align-items: center; overflow: hidden; }
+    .qty-btn-modal { background: #fff; border: none; padding: 0 10px; font-size: 1.2rem; color: var(--color-muted); cursor: pointer; }
+    .qty-input-modal { width: 60px; text-align: center; border: none; border-left: 1px solid #ddd; border-right: 1px solid #ddd; font-weight: 500; font-size: 0.9rem; }
+    .delete-btn-rosiva { border: 1px solid var(--color-primary); color: var(--color-primary); background: transparent; border-radius: 6px; padding: 5px 10px; transition: 0.3s; }
+    .delete-btn-rosiva:hover { background: var(--color-primary); color: #fff; }
 </style>
 
 <script>
@@ -98,7 +99,7 @@ window.renderFullCartPage = function() {
 
     let subtotal = 0;
     container.innerHTML = basket.map(item => {
-        let itemTotal = item.price * item.item;
+        let itemTotal = Number(item.price) * Number(item.item);
         subtotal += itemTotal;
         return `
             <div class="cart-item-row">
@@ -108,7 +109,7 @@ window.renderFullCartPage = function() {
                     </div>
                     <div class="col-9 col-md-3">
                         <h6 class="fw-bold mb-0">${item.name}</h6>
-                        <small class="text-muted">${item.price.toLocaleString()} MMK</small>
+                        <small class="text-muted">${Number(item.price).toLocaleString()} MMK</small>
                     </div>
                     <div class="col-6 col-md-3 d-flex justify-content-center">
                         <div class="qty-box-modal">
@@ -133,22 +134,31 @@ window.renderFullCartPage = function() {
 };
 
 // Update hidden input with localStorage data before submitting the form
-document.getElementById('checkoutForm').addEventListener('submit', function(e) {
-    let basket = JSON.parse(localStorage.getItem('psm_cart_data')) || [];
-    if (basket.length === 0) {
-        e.preventDefault();
-        alert("Your basket is empty!");
-        return;
-    }
-    document.getElementById('cartDataInput').value = JSON.stringify(basket);
-});
+document.addEventListener('DOMContentLoaded', function() {
+    renderFullCartPage();
 
-document.addEventListener('DOMContentLoaded', renderFullCartPage);
+    const checkoutForm = document.getElementById('checkoutForm');
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', function(e) {
+            let basket = JSON.parse(localStorage.getItem('psm_cart_data')) || [];
+            if (basket.length === 0) {
+                e.preventDefault();
+                alert("Your basket is empty!");
+                return;
+            }
+            document.getElementById('cartDataInput').value = JSON.stringify(basket);
+        });
+    }
+});
 
 window.clearFullCart = function() {
     if(confirm("Empty your entire basket?")) {
         localStorage.removeItem('psm_cart_data');
-        location.reload();
+        if (typeof saveAndRender === "function") {
+            saveAndRender();
+        } else {
+            renderFullCartPage();
+        }
     }
 };
 </script>

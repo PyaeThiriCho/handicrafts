@@ -17,7 +17,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('categories.update', $category) }}" method="POST">
+                <form action="{{ route('categories.update', $category) }}" method="POST" enctype="multipart/form-data">
                     @csrf 
                     @method('PUT')
 
@@ -25,6 +25,16 @@
                         <label class="text-dark font-weight-bold" style="color: #A52A2A !important;">Category Name</label>
                         <input name="categoryName" class="form-control border-warning shadow-sm" 
                                value="{{ old('categoryName', $category->name) }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="text-dark font-weight-bold" style="color: #A52A2A !important;">Update Cover Image</label>
+                        @if($category->image)
+                            <div class="mb-2">
+                                <img src="{{ asset('backend_assets/img/' . $category->image) }}" width="120" class="img-thumbnail rounded shadow-sm" alt="Current Image">
+                            </div>
+                        @endif
+                        <input type="file" name="categoryImage" class="form-control-file border-warning shadow-sm p-1 border rounded">
                     </div>
 
                     <div class="form-group">

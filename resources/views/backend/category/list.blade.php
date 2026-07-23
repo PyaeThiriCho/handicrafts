@@ -28,6 +28,7 @@
                 <thead class="bg-light text-maroon">
                     <tr>
                         <th>ID</th>
+                        <th>Cover</th>
                         <th>Craft Category</th>
                         <th>Brief Description</th>
                         <th>Added Date</th>
@@ -37,11 +38,18 @@
                 <tbody>
                     @forelse($categories as $category)
                         <tr class="animated fadeInUp">
-                            <td class="font-weight-bold">#{{ $category->id }}</td>
-                            <td class="text-maroon"><strong>{{ $category->name }}</strong></td>
-                            <td class="text-muted italic small">{{ \Illuminate\Support\Str::limit($category->description, 70) }}</td>
-                            <td>{{ $category->created_at->format('d/m/Y') }}</td>
-                            <td class="text-center">
+                            <td class="font-weight-bold align-middle">#{{ $category->id }}</td>
+                            <td class="text-center align-middle" width="80">
+                                @if($category->image)
+                                    <img src="{{ asset('backend_assets/img/' . $category->image) }}" width="60" height="60" class="rounded shadow-sm" style="object-fit: cover;">
+                                @else
+                                    <span class="badge badge-secondary">No Image</span>
+                                @endif
+                            </td>
+                            <td class="text-maroon align-middle"><strong>{{ $category->name }}</strong></td>
+                            <td class="text-muted italic small align-middle">{{ \Illuminate\Support\Str::limit($category->description, 70) }}</td>
+                            <td class="align-middle">{{ $category->created_at->format('d/m/Y') }}</td>
+                            <td class="text-center align-middle">
                                 <div class="btn-group">
                                     <a href="{{ route('categories.show', $category) }}" class="btn btn-sm btn-outline-info" title="View"><i class="fas fa-eye"></i></a>
                                     <a href="{{ route('categories.edit', $category) }}" class="btn btn-sm btn-outline-warning" title="Edit"><i class="fas fa-pen"></i></a>
@@ -55,7 +63,7 @@
                             </td>
                         </tr>
                     @empty
-                        <tr><td colspan="5" class="text-center py-5 text-muted">No traditional crafts found in the archives.</td></tr>
+                        <tr><td colspan="6" class="text-center py-5 text-muted">No traditional crafts found in the archives.</td></tr>
                     @endforelse
                 </tbody>
             </table>

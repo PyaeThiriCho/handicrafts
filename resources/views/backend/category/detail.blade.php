@@ -11,6 +11,17 @@
     <div class="card-body">
         <div class="p-3 mb-2 bg-light text-dark rounded border">
             <h5 class="text-maroon border-bottom pb-2 font-weight-bold">Craft Overview</h5>
+            
+            @if($category->image)
+                <div class="row mt-3 mb-4">
+                    <div class="col-sm-3 font-weight-bold text-muted small uppercase">Cover Image</div>
+                    <div class="col-sm-9">
+                        <img src="{{ asset('backend_assets/img/' . $category->image) }}" width="200" class="img-thumbnail shadow-sm rounded">
+                    </div>
+                </div>
+                <hr>
+            @endif
+
             <div class="row mt-3">
                 <div class="col-sm-3 font-weight-bold text-muted small uppercase">Reference ID</div>
                 <div class="col-sm-9 text-danger">#{{ $category->id }}</div>

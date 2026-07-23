@@ -1,71 +1,38 @@
-    <footer class="bg-dark text-white pt-5 pb-3">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <h4 class="fw-bold mb-4" style="color: red; font-family: 'PT Serif', serif;">PSM <span class="text-white">Craft House</span></h4>
-                    <p class="text-secondary small">
-                        Authentic Myanmar handicrafts, tradition reimagined for the modern home. From the heart of Mandalay to your doorstep.
-                    </p>
-                    <div class="social-links mt-4">
-                        <a href="#" class="me-3 social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="me-3 social-icon"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="me-3 social-icon"><i class="fa-brands fa-tiktok"></i></a>
-                        <a href="#" class="me-3 social-icon"><i class="fa-brands fa-viber"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-6">
-                    <h6 class="fw-bold mb-4 text-uppercase">Shop</h6>
-                    <ul class="list-unstyled footer-links">
-                        <li><a href="{{ url('/#products') }}">Best Sellers</a></li>
-                        <li><a href="{{ url('/#categories') }}">All Categories</a></li>
-                        <li><a href="/new-arrivals">New Arrivals</a></li>
-                        <li><a href="/sale">Special Offers</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-2 col-md-6">
-                    <h6 class="fw-bold mb-4 text-uppercase">Support</h6>
-                    <ul class="list-unstyled footer-links">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about">About Us</a></li>
-                        <li><a href="/contact">Contact</a></li>
-                        <li><a href="/faq">FAQ</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <h6 class="fw-bold mb-4 text-uppercase">Find Us</h6>
-                    <ul class="list-unstyled text-secondary small">
-                        <li class="mb-3 d-flex align-items-start">
-                            <i class="fa-solid fa-location-dot mt-1 me-3 text-danger"></i>
-                            <span>Mandalay, Myanmar. </span>
-                        </li>   
-                        <li class="mb-3">
-                            <i class="fa-solid fa-phone me-3 text-danger"></i>
-                            +95 9 123 456 789
-                        </li>
-                        <li class="mb-3">
-                            <i class="fa-solid fa-envelope me-3 text-danger"></i>
-                            contact@psmcrafthouse.com
-                        </li>
-                    </ul>
-                </div>
+<footer class="pt-5 pb-4 mt-5 text-white reveal" style="background: linear-gradient(135deg, var(--color-dark) 0%, #0F0E0D 100%); border-top: 4px solid var(--color-primary);">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <h5 class="fw-bold text-uppercase mb-3 tracking-widest" style="color: var(--color-gold); font-size: 0.9rem; font-family: var(--font-serif);">PSM Craft House</h5>
+                <p class="text-white-50 small lh-lg" style="max-width: 320px;">Preserving the authentic essence of traditional Myanmar craftsmanship by delivering high-quality, artisan-made masterpieces worldwide.</p>
             </div>
-
-            <hr class="my-4 border-secondary opacity-25">
-
-            <div class="row align-items-center">
-               <div class="row align-items-center">
-                    <div class="col-12 text-center">
-                        <p class="small mb-0 text-secondary" style="opacity: 0.8; letter-spacing: 0.5px;">
-                            &copy; 2026 **PSM Craft House**. All rights reserved.
-                        </p>
-                    </div>
+            <div class="col-6 col-md-3 col-lg-2">
+                <h6 class="text-uppercase fw-bold mb-3 small tracking-wider text-white">Shop</h6>
+                <ul class="list-unstyled text-white-50 small">
+                    <li class="mb-2"><a href="{{ route('frontend.all.products') }}" class="text-reset text-decoration-none opacity-75 gold-link">All Crafts</a></li>
+                    <li class="mb-2"><a href="#categories" class="text-reset text-decoration-none opacity-75 gold-link">Collections</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-3 col-lg-2">
+                <h6 class="text-uppercase fw-bold mb-3 small tracking-wider text-white">Support</h6>
+                <ul class="list-unstyled text-white-50 small">
+                    <li class="mb-2"><a href="{{ route('contactpage') }}" class="text-reset text-decoration-none opacity-75 gold-link">Contact Us</a></li>
+                    <li class="mb-2"><a href="{{ route('aboutpage') }}" class="text-reset text-decoration-none opacity-75 gold-link">Our Story</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <h6 class="text-uppercase fw-bold mb-3 small tracking-wider" style="color: var(--color-gold);">Find Us</h6>
+                <p class="text-white-50 small mb-2"><i class="fa-solid fa-location-dot me-2 text-white"></i> Mandalay Region, Myanmar</p>
+                <div class="d-flex gap-2 mt-3">
+                    <a href="#" class="btn btn-sm btn-outline-light rounded-circle d-flex align-items-center justify-content-center footer-social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="btn btn-sm btn-outline-light rounded-circle d-flex align-items-center justify-content-center footer-social-icon"><i class="fa-brands fa-instagram"></i></a>
                 </div>
-                {{-- <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
-                    <img src="{{ asset('frontend_assets/images/payment-methods.png') }}" alt="Payment Methods" style="height: 30px; opacity: 0.7;">
-                </div> --}}
             </div>
         </div>
-    </footer>
+        <hr class="mt-4 mb-3 border-light opacity-10">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0 small text-white-50">&copy; 2026 PSM Craft House. Handmade Heritage.</p>
+            </div>
+        </div>
+    </div>
+</footer>
