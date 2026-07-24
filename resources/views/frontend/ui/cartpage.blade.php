@@ -58,11 +58,11 @@
                     </div>
                 </div>
 
-                <div class="text-center mt-4">
+                {{-- <div class="text-center mt-4">
                     <button class="btn btn-link text-muted text-decoration-none small" onclick="clearFullCart()">
                         <i class="fas fa-trash-alt me-1"></i> Clear entire cart
                     </button>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

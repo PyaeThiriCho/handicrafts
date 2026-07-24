@@ -33,33 +33,27 @@ class CraftSeeder extends Seeder
                 ]
             ],
 
-        'Handmade Bag Set' => [
-            'folder' => 'handmade-bags',
-            'items' => [
-                ['Classic Rattan Tote', 35000, 'Handcrafted in Bagan from premium natural rattan, this classic open-top tote features a sturdy vertical weave perfect for daily use.', 15],
-                ['Round Handle Straw Bag', 28000, 'Originating from Inle Lake, this charming straw bag features a unique rounded handle decorated with handmade fabric flowers and tassels.', 12],
-                ['Woven Envelope Clutch', 18000, 'Handwoven in Bago from fine bamboo strips, this elegant envelope clutch is finished with a traditional wooden button closure.', 20],
-                ['Textured Bag', 22000, 'Made in Yangon from palm leaves, this textured bag features a beautifully patterned front flap.', 18],
-                ['Slim Straw Wallet', 15000, 'Crafted in Pathein from durable woven straw, this slim zip-around wallet comes with a convenient wristlet strap and colorful tassel.', 25],
-                ['Ribbon-Tied Handbag', 32000, 'Hand-basketed in Bagan using rattan, this cute handbag features a soft linen lining that ties into a decorative bow.', 10],
-                ['Vertical Crossbody Case', 20000, 'Designed in Bagan using strong woven rattan and genuine leather, this vertical crossbody phone pouch keeps your essentials secure.', 14],
-                ['Circular Crossbody Bag', 27000, 'Handwoven in Pakokku with a beautiful starburst rattan pattern, this trendy round bag features a classic leather strap.', 16],
-                ['3-Piece Nesting Baskets', 65000, 'Handcrafted in Bago from dark-stained woven seagrass, this set of three nesting storage baskets features matching lids and handles.', 8],
-                ['Floral Burlap Tote', 30000, 'Made in Shan State from eco-friendly burlap jute, this rustic tote features wooden handles and beautiful hand-embroidered white flowers.', 12],
-                ['Daisy Linen Tote', 29000, 'Tailored in Mandalay from soft, lightweight cream linen, this simple shoulder bag is decorated with hand-stitched daisy embroidery.', 15],
-                ['Elephant Motif Clutch', 50000, 'Hand-stitched in Inle from premium velvet fabric and wood, this traditional clutch features elegant embroidered golden elephant designs.', 10],
-                ['Floral Patchwork Tote', 38000, 'Crafted in Amarapura from durable canvas and leather, this colorful tote bag features detailed floral patchwork embroidery.', 7],
-                ['Daisy Burlap Bag', 31000, 'Handwoven in Monywa from natural burlap fiber, this sturdy handbag is decorated with a sweet, hand-stitched white wildflower pattern.', 11],
-                ['Pearl-Handle Rattan Bag', 40000, 'Made in Bagan from polished natural rattan, this elegant square basket bag is elevated by a stylish faux-pearl handle.', 6],
-                ['2-Piece Miniature Baskets', 30000, 'Hand-braided in Pyin Oo Lwin from light straw, this set of two miniature gift baskets features delicate paper flower accents.', 18],
-            ]
-        ],
-
-
-
-
-
-
+            'Handmade Bag Set' => [
+                'folder' => 'handmade-bags',
+                'items' => [
+                    ['Classic Rattan Tote', 35000, 'Handcrafted in Bagan from premium natural rattan, this classic open-top tote features a sturdy vertical weave perfect for daily use.', 15],
+                    ['Round Handle Straw Bag', 28000, 'Originating from Inle Lake, this charming straw bag features a unique rounded handle decorated with handmade fabric flowers and tassels.', 12],
+                    ['Woven Envelope Clutch', 18000, 'Handwoven in Bago from fine bamboo strips, this elegant envelope clutch is finished with a traditional wooden button closure.', 20],
+                    ['Textured Bag', 22000, 'Made in Yangon from palm leaves, this textured bag features a beautifully patterned front flap.', 18],
+                    ['Slim Straw Wallet', 15000, 'Crafted in Pathein from durable woven straw, this slim zip-around wallet comes with a convenient wristlet strap and colorful tassel.', 25],
+                    ['Ribbon-Tied Handbag', 32000, 'Hand-basketed in Bagan using rattan, this cute handbag features a soft linen lining that ties into a decorative bow.', 10],
+                    ['Vertical Crossbody Case', 20000, 'Designed in Bagan using strong woven rattan and genuine leather, this vertical crossbody phone pouch keeps your essentials secure.', 14],
+                    ['Circular Crossbody Bag', 27000, 'Handwoven in Pakokku with a beautiful starburst rattan pattern, this trendy round bag features a classic leather strap.', 16],
+                    ['3-Piece Nesting Baskets', 65000, 'Handcrafted in Bago from dark-stained woven seagrass, this set of three nesting storage baskets features matching lids and handles.', 8],
+                    ['Floral Burlap Tote', 30000, 'Made in Shan State from eco-friendly burlap jute, this rustic tote features wooden handles and beautiful hand-embroidered white flowers.', 12],
+                    ['Daisy Linen Tote', 29000, 'Tailored in Mandalay from soft, lightweight cream linen, this simple shoulder bag is decorated with hand-stitched daisy embroidery.', 15],
+                    ['Elephant Motif Clutch', 50000, 'Hand-stitched in Inle from premium velvet fabric and wood, this traditional clutch features elegant embroidered golden elephant designs.', 10],
+                    ['Floral Patchwork Tote', 38000, 'Crafted in Amarapura from durable canvas and leather, this colorful tote bag features detailed floral patchwork embroidery.', 7],
+                    ['Daisy Burlap Bag', 31000, 'Handwoven in Monywa from natural burlap fiber, this sturdy handbag is decorated with a sweet, hand-stitched white wildflower pattern.', 11],
+                    ['Pearl-Handle Rattan Bag', 40000, 'Made in Bagan from polished natural rattan, this elegant square basket bag is elevated by a stylish faux-pearl handle.', 6],
+                    ['2-Piece Miniature Baskets', 30000, 'Hand-braided in Pyin Oo Lwin from light straw, this set of two miniature gift baskets features delicate paper flower accents.', 18],
+                ]
+            ],
 
             'Traditional Umbrella' => [
                 'folder' => 'umbrella',
@@ -82,6 +76,7 @@ class CraftSeeder extends Seeder
                     ['Purple Parasol', 45000, 'Striking purple shade for cultural festivals.', 2]
                 ]
             ],
+
             'Traditional Puppets' => [
                 'folder' => 'puppets',
                 'items' => [
@@ -103,6 +98,7 @@ class CraftSeeder extends Seeder
                     ['Dancers Pair', 60000, 'Two mini puppets showing court dancing styles.', 2]
                 ]
             ],
+
             'Pottery' => [
                 'folder' => 'pottery',
                 'items' => [
@@ -124,6 +120,7 @@ class CraftSeeder extends Seeder
                     ['Stacked Mini Pots', 35000, 'Row of tiny thumb-sized collector pots.', 10]
                 ]
             ],
+
             'Bamboo Basketry' => [
                 'folder' => 'bamboo-basket',
                 'items' => [
@@ -149,19 +146,24 @@ class CraftSeeder extends Seeder
 
         foreach ($craftData as $catName => $categoryInfo) {
             $category = Category::where('name', $catName)->first();
-            
+
             if ($category) {
                 foreach ($categoryInfo['items'] as $index => $item) {
-                    Product::create([
-                        'name'        => $item[0],
-                        'category_id' => $category->id,
-                        'price'       => $item[1],
-                        'description' => $item[2],
-                        'stock'       => $item[3], 
-                        'image'       => 'backend_assets/img/' . $categoryInfo['folder'] . '/photo (' . ($index + 1) . ').jpg',
-                    ]);
+                    // Using updateOrCreate prevents duplicate entries!
+                    Product::updateOrCreate(
+                        [
+                            'name'        => $item[0],
+                            'category_id' => $category->id,
+                        ],
+                        [
+                            'price'       => $item[1],
+                            'description' => $item[2],
+                            'stock'       => $item[3],
+                            'image'       => 'backend_assets/img/' . $categoryInfo['folder'] . '/photo (' . ($index + 1) . ').jpg',
+                        ]
+                    );
                 }
             }
         }
     }
-}   
+}
