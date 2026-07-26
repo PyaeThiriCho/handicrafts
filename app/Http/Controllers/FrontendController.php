@@ -16,15 +16,29 @@ class FrontendController extends Controller
     {
         $categories = Category::all();
         
-       // Fetch products. You can use ->take(8) to limit how many show on the home page
+        // Define the exact names of your 8 Best Seller items
+        $bestsellerNames = [
+            'White Elephant',
+            '3-Tier Stand',
+            'Market Tote Bag',
+            'Food Cover Dome',
+            'Lacquer Teapot',
+            'Round Handle Straw Bag',
+            'Pearl-Handle Rattan Bag',
+            'Mini Painted Pots',
+        ];
+
+        // Fetch these specific 8 products
+        $bestSellers = Product::whereIn('name', $bestsellerNames)->get();
+
+        // Also fetch general latest products in case you use $products elsewhere on homepage
         $products = Product::latest()->take(8)->get();
 
-        return view('frontend.ui.homepage', compact('categories', 'products'));
+        return view('frontend.ui.homepage', compact('categories', 'products', 'bestSellers'));
     }
 
     /**
-     * FIX: Added the missing showCategory method 
-     * This handles clicking a category like "Pottery" or "Woodwork"
+     * Handles clicking a category like "Pottery" or "Traditional Puppets"
      */
     public function showCategory($id)
     {
@@ -65,12 +79,10 @@ class FrontendController extends Controller
 
         $products = $query->latest()->paginate(12);
 
-        // 3. Return the view with the selected category ID so we can highlight it in the select box
+        // 3. Return the view with the selected category ID
         return view('frontend.ui.all_products', compact('categories', 'products'));
-
     }
 
-    
     public function about()
     {
         $categories = Category::all();

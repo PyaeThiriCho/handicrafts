@@ -27,30 +27,46 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($order->order_items as $item)
-                                <tr>
-                                    <td class="ps-4">
-                                        <div class="d-flex align-items-center">
-                                            <img src="{{ asset($item->product->image ?? 'images/default.png') }}" 
-                                                 class="rounded-3 me-3" style="width: 50px; height: 50px; object-fit: cover;">
-                                            <div>
-                                                <div class="fw-bold">{{ $item->product->name }}</div>
+                                @forelse($order->order_items as $item)
+                                    @php
+                                        // Safely extract price, qty, and product name with dynamic fallbacks
+                                        $itemPrice = $item->price ?? optional($item->product)->price ?? 0;
+                                        $itemQty   = $item->quantity ?? $item->qty ?? 1;
+                                        $subtotal  = $itemPrice * $itemQty;
+                                        $productName = optional($item->product)->name ?? $item->product_name ?? 'Product Unavailable';
+                                        $productImage = optional($item->product)->image ?? 'frontend_assets/images/about1.jpg';
+                                    @endphp
+                                    <tr>
+                                        <td class="ps-4">
+                                            <div class="d-flex align-items-center">
+                                                <img src="{{ asset($productImage) }}" 
+                                                     class="rounded-3 me-3" 
+                                                     style="width: 50px; height: 50px; object-fit: cover;"
+                                                     onerror="this.onerror=null;this.src='{{ asset('frontend_assets/images/about1.jpg') }}';">
+                                                <div>
+                                                    <div class="fw-bold text-dark">{{ $productName }}</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>{{ number_format($item->price) }} K</td>
-                                    <td>{{ $item->quantity }}</td>
-                                    <td class="text-end pe-4 fw-bold">
-                                        {{ number_format($item->price * $item->quantity) }} K
-                                    </td>
-                                </tr>
-                                @endforeach
+                                        </td>
+                                        <td>{{ number_format($itemPrice) }} K</td>
+                                        <td>{{ $itemQty }}</td>
+                                        <td class="text-end pe-4 fw-bold">
+                                            {{ number_format($subtotal) }} K
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="4" class="text-center text-muted py-4">
+                                            No item details found for this order. (This occurs if the order was created before items were configured to save to database).
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td colspan="3" class="text-end fw-bold py-3">Grand Total:</td>
                                     <td class="text-end pe-4 fw-bold text-primary py-3" style="font-size: 1.2rem;">
-                                        {{ number_format($order->total_amount) }} K
+                                        {{ number_format($order->total_amount ?? $order->total_price ?? 0) }} K
                                     </td>
                                 </tr>
                             </tfoot>
@@ -123,7 +139,7 @@
                             </button>
                         @endif
                     </div>
-                    </div>
+                </div>
             </div>
         </div>
     </div>

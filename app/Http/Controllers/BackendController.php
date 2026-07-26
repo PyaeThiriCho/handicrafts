@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Order;
 
 class BackendController extends Controller
 {
@@ -19,6 +20,9 @@ class BackendController extends Controller
         $lowStockProducts = Product::where('stock', '<=', 5)->get(); 
         $pendingOrders = 0; // Update when order table is connected
 
+        // Count both 'pending' and 'processing'
+        $pendingOrders = Order::whereIn('status', ['pending', 'processing', 'Pending', 'Processing'])->count();
+        
         return view('backend.table', compact(
             'totalCategories', 
             'categories', 

@@ -18,7 +18,7 @@
                         <span class="text-uppercase fw-bold text-white-50 small mb-2 d-inline-block reveal" style="letter-spacing: 2px;">Heritage Reimagined</span>
                         <h1 class="display-4 fw-bold text-white mb-3 tracking-tight reveal" style="max-width: 650px; font-family: var(--font-serif); transition-delay: .1s;">Myanmar Traditional Handicrafts</h1>
                         <p class="lead text-white-50 mb-4 reveal" style="max-width: 550px; transition-delay: .2s;">Discover authentic, hand-carved works of art shaped with dedication by generational local master craftsmen.</p>
-                        <a href="#products" class="btn text-white px-4 py-2 text-uppercase fw-medium rounded-pill shadow reveal" style="background-color: var(--color-primary); font-size: 0.85rem; letter-spacing: 1px; transition-delay: .3s;">Explore Collection</a>
+                        <a href="#categories" class="btn text-white px-4 py-2 text-uppercase fw-medium rounded-pill shadow reveal" style="background-color: var(--color-primary); font-size: 0.85rem; letter-spacing: 1px; transition-delay: .3s;">Explore Collection</a>
                     </div>
 
                 </div>
@@ -60,6 +60,7 @@
 </div>
 
 
+
 {{-- Best Seller Showcase Layout --}}
 <section class="container py-5 my-4" id="products">
 
@@ -76,7 +77,7 @@
     </div>
 
     <div class="best-seller-slider">
-        @foreach($products->take(8) as $product)
+        @foreach($bestSellers as $product)
         <div class="px-2 py-3">
             <div class="card premium-card p-3">
                 <div class="img-zoom-wrapper position-relative" style="background-color: #FAF8F5;">
@@ -84,7 +85,7 @@
 
                     <div class="position-absolute bottom-0 start-50 translate-middle-x mb-3 opacity-0 card-actions-hover d-flex gap-2" style="transition: all 0.3s ease;">
                         <a href="{{ route('frontend.product.details', $product->id) }}" class="btn btn-white btn-sm rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: white; color: var(--color-primary);"><i class="fa-solid fa-eye"></i></a>
-                        <button onclick="addItem('{{$product->id}}', '{{$product->product_name}}', '{{$product->price}}', '{{asset($product->image)}}')" class="btn btn-white btn-sm rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: white; color: var(--color-primary);"><i class="fa-solid fa-bag-shopping"></i></button>
+                        <button onclick="addItem('{{$product->id}}', '{{$product->name}}', '{{$product->price}}', '{{asset($product->image)}}')" class="btn btn-white btn-sm rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: white; color: var(--color-primary);"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
 
@@ -97,7 +98,6 @@
         @endforeach
     </div>
 </section>
-
 
 {{-- Curated Collection Categories Showcase --}}
 {{-- Curated Collection Categories Showcase --}}

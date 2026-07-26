@@ -27,21 +27,18 @@
                     <textarea name="address" class="form-control bg-light border-0 rounded-3" rows="3" required></textarea>
                 </div>
 
+                
                 <label class="small fw-bold text-muted mb-2">Payment Method</label>
-                <div class="row g-2 mb-4">
-                    <div class="col-4">
-                        <input type="radio" name="payment_method" value="kpay" id="kpay" class="btn-check" checked>
-                        <label class="btn pay-option w-100 py-2 border-0 bg-light rounded-3 shadow-none" for="kpay">KPay</label>
+                    <div class="row g-2 mb-4">
+                        <div class="col-6">
+                            <input type="radio" name="payment_method" value="kpay" id="kpay" class="btn-check" checked>
+                            <label class="btn pay-option w-100 py-2 border-0 bg-light rounded-3 shadow-none" for="kpay">KPay</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="radio" name="payment_method" value="wave" id="wave" class="btn-check">
+                            <label class="btn pay-option w-100 py-2 border-0 bg-light rounded-3 shadow-none" for="wave">Wave</label>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <input type="radio" name="payment_method" value="wave" id="wave" class="btn-check">
-                        <label class="btn pay-option w-100 py-2 border-0 bg-light rounded-3 shadow-none" for="wave">Wave</label>
-                    </div>
-                    <div class="col-4">
-                        <input type="radio" name="payment_method" value="cod" id="cod" class="btn-check">
-                        <label class="btn pay-option w-100 py-2 border-0 bg-light rounded-3 shadow-none" for="cod">COD</label>
-                    </div>
-                </div>
                 <button type="submit" class="btn btn-brand w-100 py-2 rounded-pill fw-bold shadow-sm">Review Order</button>
             </form>
         </div>

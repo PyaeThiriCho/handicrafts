@@ -7,18 +7,67 @@
    ========================================================================== */
 
 /* ---------------------------------------------------------------------- */
+/* About Page Image Stack Fix                                             */
+/* ---------------------------------------------------------------------- */
+.image-stack {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 480px;
+  margin: 0 auto;
+}
+
+/* Primary large background image */
+.main-about-img {
+  width: 85%;
+  height: 85%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  display: block;
+}
+
+/* Secondary overlapping floating image */
+.sub-about-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 55%;
+  height: 55%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+  border: 6px solid #ffffff;
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 575px) {
+  .image-stack {
+    height: 360px;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
 /* Scroll-reveal                                                          */
 /* ---------------------------------------------------------------------- */
-.reveal{
+.reveal {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);
   will-change: opacity, transform;
 }
-.reveal.is-visible{ opacity: 1; transform: none; }
+.reveal.is-visible { 
+  opacity: 1; 
+  transform: none; 
+}
 
-@media (prefers-reduced-motion: reduce){
-  .reveal{ opacity: 1; transform: none; transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { 
+    opacity: 1; 
+    transform: none; 
+    transition: none; 
+  }
 }
 
 /* ---------------------------------------------------------------------- */
@@ -26,7 +75,7 @@
 /* Concentric-ring motif nodding to Pathein parasols & lacquerware bowls,  */
 /* replaces the plain .divided red bar between section headings.          */
 /* ---------------------------------------------------------------------- */
-.ring-divider{
+.ring-divider {
   width: 60px;
   height: 60px;
   margin: 1rem auto 0;
@@ -34,8 +83,12 @@
   align-items: center;
   justify-content: center;
 }
-.ring-divider svg{ width: 100%; height: 100%; overflow: visible; }
-.ring-divider circle{
+.ring-divider svg { 
+  width: 100%; 
+  height: 100%; 
+  overflow: visible; 
+}
+.ring-divider circle {
   fill: none;
   stroke: var(--color-gold);
   stroke-width: 1.4;
@@ -44,24 +97,24 @@
   transform-origin: center;
   transition: stroke-dashoffset 1.4s ease;
 }
-.ring-divider .dot{
+.ring-divider .dot {
   stroke: none;
   fill: var(--color-primary);
   r: 3;
   opacity: 0;
   transition: opacity .6s ease .8s;
 }
-.ring-divider.is-visible circle{ stroke-dashoffset: 0; }
-.ring-divider.is-visible circle:nth-child(2){ transition-delay: .15s; }
-.ring-divider.is-visible circle:nth-child(3){ transition-delay: .3s; }
-.ring-divider.is-visible .dot{ opacity: 1; }
+.ring-divider.is-visible circle { stroke-dashoffset: 0; }
+.ring-divider.is-visible circle:nth-child(2) { transition-delay: .15s; }
+.ring-divider.is-visible circle:nth-child(3) { transition-delay: .3s; }
+.ring-divider.is-visible .dot { opacity: 1; }
 
 /* ---------------------------------------------------------------------- */
 /* Fixed "Browse Crafts" ribbon tab                                       */
 /* A persistent, physical-feeling entry point into the sidebar, distinct  */
 /* from the buried nav link — this is the main "come explore" invitation. */
 /* ---------------------------------------------------------------------- */
-.browse-ribbon{
+.browse-ribbon {
   position: fixed;
   top: 50%;
   left: 0;
@@ -85,25 +138,25 @@
   box-shadow: 2px 4px 14px rgba(0,0,0,0.18);
   transition: background .3s ease, padding .3s ease, letter-spacing .3s ease;
 }
-.browse-ribbon i{
+.browse-ribbon i {
   transform: rotate(90deg);
   transition: transform .3s ease;
 }
-.browse-ribbon:hover{
+.browse-ribbon:hover {
   background: var(--color-gold);
   color: var(--color-dark);
   letter-spacing: 2px;
 }
-.browse-ribbon:hover i{ transform: rotate(90deg) translateX(2px); }
+.browse-ribbon:hover i { transform: rotate(90deg) translateX(2px); }
 
-@media (max-width: 767px){
-  .browse-ribbon{ display: none; } /* nav link + bottom sheet covers mobile */
+@media (max-width: 767px) {
+  .browse-ribbon { display: none; } /* nav link + bottom sheet covers mobile */
 }
 
 /* ---------------------------------------------------------------------- */
 /* Sidebar refinements — extends existing .sidebar-menu / .sidebar-link   */
 /* ---------------------------------------------------------------------- */
-.sidebar-eyebrow{
+.sidebar-eyebrow {
   display: block;
   color: var(--color-gold);
   font-size: .68rem;
@@ -113,7 +166,7 @@
   margin-bottom: 2px;
 }
 
-.sidebar-thumb{
+.sidebar-thumb {
   width: 42px;
   height: 42px;
   border-radius: 8px;
@@ -122,7 +175,7 @@
   flex-shrink: 0;
 }
 
-.sidebar-footer-note{
+.sidebar-footer-note {
   margin-top: 1.75rem;
   padding-top: 1.25rem;
   border-top: 1px dashed rgba(107,29,47,0.25);
@@ -131,34 +184,43 @@
   font-style: italic;
 }
 
-@keyframes slowSpin{ from{ transform: rotate(0deg);} to{ transform: rotate(360deg);} }
-.sidebar-ring-icon{ animation: slowSpin 22s linear infinite; opacity: .55; }
+@keyframes slowSpin { 
+  from { transform: rotate(0deg); } 
+  to { transform: rotate(360deg); } 
+}
+.sidebar-ring-icon { 
+  animation: slowSpin 22s linear infinite; 
+  opacity: .55; 
+}
 
 /* ---------------------------------------------------------------------- */
 /* Gold underline link — footer & collection cards                        */
 /* ---------------------------------------------------------------------- */
-.gold-link{
+.gold-link {
   position: relative;
   text-decoration: none;
 }
-.gold-link::after{
+.gold-link::after {
   content: "";
   position: absolute;
-  left: 0; bottom: -2px;
-  width: 0%; height: 1px;
+  left: 0; 
+  bottom: -2px;
+  width: 0%; 
+  height: 1px;
   background: var(--color-gold);
   transition: width .35s ease;
 }
-.gold-link:hover::after{ width: 100%; }
+.gold-link:hover::after { width: 100%; }
 
 /* ---------------------------------------------------------------------- */
 /* Footer social icon — gold hover instead of flat red                    */
 /* ---------------------------------------------------------------------- */
-.footer-social-icon{
-  width: 34px; height: 34px;
+.footer-social-icon {
+  width: 34px; 
+  height: 34px;
   transition: all .3s ease;
 }
-.footer-social-icon:hover{
+.footer-social-icon:hover {
   background: var(--color-gold) !important;
   border-color: var(--color-gold) !important;
   color: var(--color-dark) !important;
@@ -170,7 +232,7 @@
 /* in line with the brand tokens instead of default Bootstrap danger-red. */
 /* ---------------------------------------------------------------------- */
 
-.divided{
+.divided {
   width: 50px;
   border: none;
   border-top: 3px solid var(--color-gold);
@@ -178,8 +240,9 @@
   margin: 1rem auto 1.25rem;
 }
 
-.icon-box{
-  width: 52px; height: 52px;
+.icon-box {
+  width: 52px; 
+  height: 52px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -190,64 +253,65 @@
   flex-shrink: 0;
 }
 
-.contact-info-card, .auth-card, .transact-card{
+.contact-info-card, .auth-card, .transact-card {
   border-radius: 18px !important;
   transition: transform .35s ease, box-shadow .35s ease;
 }
-.contact-info-card:hover{
+.contact-info-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 16px 30px -14px rgba(107,29,47,0.18) !important;
 }
 
-.btn-brand{
+.btn-brand {
   background-color: var(--color-primary) !important;
   border-color: var(--color-primary) !important;
   color: #fff !important;
   transition: background-color .3s ease, transform .2s ease;
 }
-.btn-brand:hover{
+.btn-brand:hover {
   background-color: #5A1726 !important;
   color: #fff !important;
   transform: translateY(-2px);
 }
 
-.btn-brand-outline{
+.btn-brand-outline {
   border: 1px solid var(--color-primary) !important;
   color: var(--color-primary) !important;
   background: transparent !important;
   transition: all .3s ease;
 }
-.btn-brand-outline:hover{
+.btn-brand-outline:hover {
   background: var(--color-primary) !important;
   color: #fff !important;
 }
 
-.text-brand{ color: var(--color-primary) !important; }
-.bg-brand-subtle{ background: rgba(107,29,47,0.08) !important; }
+.text-brand { color: var(--color-primary) !important; }
+.bg-brand-subtle { background: rgba(107,29,47,0.08) !important; }
 
-.breadcrumb-item.active{ color: var(--color-primary) !important; }
-.breadcrumb-item a{ color: var(--color-muted) !important; }
+.breadcrumb-item.active { color: var(--color-primary) !important; }
+.breadcrumb-item a { color: var(--color-muted) !important; }
 
-.overlay-btn{
-  width: 45px; height: 45px;
+.overlay-btn {
+  width: 45px; 
+  height: 45px;
   border-radius: 8px;
   background: var(--color-primary) !important;
   color: #fff;
   border: none;
   transition: .3s;
 }
-.overlay-btn:hover{
+.overlay-btn:hover {
   background: var(--color-gold) !important;
   color: var(--color-dark) !important;
   transform: scale(1.08);
 }
 
-.form-control:focus, .form-select:focus{
+.form-control:focus, .form-select:focus {
   border-color: var(--color-gold) !important;
   box-shadow: 0 0 0 0.2rem rgba(201,162,39,0.18) !important;
 }
 
-.btn-check:checked + .pay-option{
+.btn-check:checked + .pay-option {
   background-color: var(--color-primary) !important;
   color: #fff !important;
   font-weight: bold;

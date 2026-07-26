@@ -28,22 +28,23 @@
                         <td>{{ number_format($order->total_amount) }} K</td>
                         <td><span class="badge bg-info">{{ strtoupper($order->payment_method) }}</span></td>
                         <td>
-                            @if($order->status == 'pending')
-                                <span class="badge bg-warning text-dark">Pending</span>
-                            @elseif($order->status == 'accepted')
+                            @if(in_array(strtolower($order->status), ['pending', 'processing']))
+                                <span class="badge bg-warning text-dark">{{ ucfirst($order->status) }}</span>
+                            @elseif(strtolower($order->status) == 'accepted')
                                 <span class="badge bg-success">Accepted</span>
-                            @elseif($order->status == 'declined')
+                            @elseif(strtolower($order->status) == 'declined')
                                 <span class="badge bg-danger">Declined</span>
                             @else
-                                <span class="badge bg-secondary">{{ $order->status }}</span>
+                                <span class="badge bg-secondary">{{ ucfirst($order->status) }}</span>
                             @endif
                         </td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <a href="{{ route('admin.orders.show', $order->id) }}" class="btn btn-sm btn-light border mr-2">View Items</a>
+                                <a href="{{ route('admin.orders.show', $order->id) }}" class="btn btn-sm btn-light border me-2 mr-2">View Items</a>
                                 
-                                @if($order->status == 'pending')
-                                    <form action="{{ route('admin.orders.accept', $order->id) }}" method="POST" class="d-inline mr-1">
+                                {{-- Allows accepting/declining both pending and processing (COD) orders --}}
+                                @if(in_array(strtolower($order->status), ['pending', 'processing']))
+                                    <form action="{{ route('admin.orders.accept', $order->id) }}" method="POST" class="d-inline me-1 mr-1">
                                         @csrf
                                         <button type="submit" class="btn btn-sm btn-success">Accept</button>
                                     </form>

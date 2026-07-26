@@ -29,7 +29,7 @@
 </div>
 
 {{-- Craft heritage stats strip --}}
-<div class="container-fluid py-5 reveal" style="background-color: var(--color-primary);">
+{{-- <div class="container-fluid py-5 reveal" style="background-color: var(--color-primary);">
     <div class="container">
         <div class="row text-center text-white g-4">
             <div class="col-6 col-md-3">
@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <div class="container py-5">
     <div class="text-center mb-5 reveal">

@@ -80,22 +80,24 @@ class CraftSeeder extends Seeder
             'Traditional Puppets' => [
                 'folder' => 'puppets',
                 'items' => [
-                    ['Ogre Puppet', 45000, 'Green masked ogre puppet with sequins.', 10],
-                    ['Princess Puppet', 45000, 'Beautiful princess puppet in a pink dress.', 10],
-                    ['Prince Puppet', 38000, 'Teak prince puppet in a yellow outfit.', 15],
-                    ['Jester Puppet', 55000, 'Funny comedic character in village clothes.', 6],
-                    ['Deity Puppet', 32000, 'Golden-crowned spirit puppet in royal clothes.', 12],
-                    ['Ministers Set', 40000, 'Two matching white-robed minister puppets.', 8],
-                    ['Garuda Puppet', 65000, 'Mythical bird-man puppet with colorful details.', 3],
-                    ['White Elephant', 42000, 'Sacred white fabric elephant string puppet.', 9],
-                    ['Dancer Puppet', 28000, 'Active marionette wearing a red silk outfit.', 20],
-                    ['Youth Puppet', 35000, 'Simple character puppet representing a village boy.', 14],
-                    ['Horse Puppet', 48000, 'Long jointed dragon puppet with silver scales.', 5],
-                    ['Festival Elephant', 20000, 'Green and red velvet elephant with movable trunk.', 40],
-                    ['Hermit Puppet', 25000, 'Wise old hermit puppet with brown robes.', 25],
-                    ['Archer Puppet', 50000, 'Warrior puppet holding a small wooden bow.', 44],
-                    ['Blue Elephant', 27000, 'Dark blue velvet elephant with gold embroidery.', 18],
-                    ['Dancers Pair', 60000, 'Two mini puppets showing court dancing styles.', 2]
+                    ['White Elephant', 30000, 'Sacred white fabric elephant string puppet.', 10],
+                    ['Ogre Puppet', 45000, 'Green masked ogre puppet with sequins.', 12],
+                    ['Jester Puppet', 75000, 'Funny comedic character in village clothes.', 8],
+                    ['Garuda Puppet', 60000, 'Mythical bird-man puppet with colorful details.', 3],
+                    ['Prince Puppet', 50000, 'Teak prince puppet in a yellow outfit.', 9],
+                    ['Princess Puppet', 50000, 'Beautiful princess puppet in a pink dress.', 20],
+                    ['Dancer Pair', 90000, 'Two mini puppets showing court dancing styles.', 14],
+                    ['Youth Puppet', 50000, 'Simple character puppet representing a village boy.', 5],
+                    ['Zawgyae Puppet', 45000, 'Active marionette wearing a red silk outfit.', 40],
+                    ['Deity', 70000, 'Golden-crowned spirit puppet in royal clothes.', 25],
+                    ['Kinnara & Kinnari', 100000, 'Half-bird, half-human mythical couple puppets with intricate wings.', 44],
+                    ['Phoe Wa yoke', 40000, 'Traditional Burmese tumbler puppet symbolizing resilience.', 18],
+                    ['Sit thu gyi', 40000, 'Warrior puppet holding a small wooden bow.', 2],
+                    ['Blue Elephant', 30000, 'Dark blue velvet elephant with gold embroidery.', 6],
+                    ['Horse Puppet', 45000, 'Articulated wooden galloping horse marionette.', 10],
+                    ['Festival Elephant', 30000, 'Green and red velvet elephant with movable trunk.', 15],
+                
+                    
                 ]
             ],
 
