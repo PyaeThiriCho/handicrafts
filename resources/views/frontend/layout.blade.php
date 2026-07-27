@@ -165,10 +165,10 @@
                 </a>
             @endforeach
 
-            <hr class="my-4 opacity-25" style="color: var(--color-primary)">
+            {{-- <hr class="my-4 opacity-25" style="color: var(--color-primary)">
             <a class="sidebar-link text-danger" href="{{ route('homepage') }}">
                 <i class="fa-solid fa-border-all me-2"></i> View All Crafts
-            </a>
+            </a> --}}
 
             <p class="sidebar-footer-note">
                 "Every piece carries the hand of its maker — no two are identical."

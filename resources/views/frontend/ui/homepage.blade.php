@@ -99,7 +99,7 @@
     </div>
 </section>
 
-{{-- Curated Collection Categories Showcase --}}
+
 {{-- Curated Collection Categories Showcase --}}
 <section class="container py-5 my-4" id="categories">
 
@@ -144,16 +144,16 @@
         @endforeach
     </div>
 
-    <div class="text-center mt-5 reveal">
+    {{-- <div class="text-center mt-5 reveal">
         <a href="{{ route('frontend.all.products') }}" class="btn text-white px-5 py-2 fw-medium rounded-pill shadow-sm" style="background-color: var(--color-primary); font-size: 0.85rem; letter-spacing: 1.5px;">
             VIEW FULL CATALOGUE
         </a>
-    </div>
+    </div> --}}
 </section>
 
 
 {{-- Premium Community Newsletter Banner --}}
-<div class="container-fluid my-5 shadow-sm overflow-hidden position-relative py-5 reveal" style="background-color: #6B1D2F;">
+{{-- <div class="container-fluid my-5 shadow-sm overflow-hidden position-relative py-5 reveal" style="background-color: #6B1D2F;">
     <div class="container py-4 position-relative" style="z-index: 2;">
         <div class="row align-items-center text-white">
             <div class="col-12 col-md-7 mb-4 mb-md-0">
@@ -169,7 +169,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 
 {{-- Customer Feedback Section --}}
