@@ -15,7 +15,7 @@
 
                 <div class="text-center mb-4">
                     <span class="text-uppercase small fw-bold text-brand" style="letter-spacing: 2px;">PSM Craft House</span>
-                    <h2 class="fw-bold" style="font-family: var(--font-serif);">Admin Login Form    </h2>
+                    <h2 class="fw-bold" style="font-family: var(--font-serif);"> Login Form    </h2>
                     <hr class="divided mx-auto">
                     <p class="text-muted small">Log in to your PSM Craft House account</p>
                 </div>

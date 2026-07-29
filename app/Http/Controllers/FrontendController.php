@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash; 
 
 use App\Models\User;
+use App\Models\Admin;
 use App\Models\Category;
 use App\Models\Product;
 
@@ -16,7 +17,6 @@ class FrontendController extends Controller
     {
         $categories = Category::all();
         
-        // Define the exact names of your 8 Best Seller items
         $bestsellerNames = [
             'White Elephant',
             '3-Tier Stand',
@@ -28,24 +28,16 @@ class FrontendController extends Controller
             'Mini Painted Pots',
         ];
 
-        // Fetch these specific 8 products
         $bestSellers = Product::whereIn('name', $bestsellerNames)->get();
-
-        // Also fetch general latest products in case you use $products elsewhere on homepage
         $products = Product::latest()->take(8)->get();
 
         return view('frontend.ui.homepage', compact('categories', 'products', 'bestSellers'));
     }
 
-    /**
-     * Handles clicking a category like "Pottery" or "Traditional Puppets"
-     */
     public function showCategory($id)
     {
-        $categories = Category::all(); // For the navbar
-        $category = Category::findOrFail($id); // The specific category selected
-        
-        // Only fetch products belonging to this category
+        $categories = Category::all();
+        $category = Category::findOrFail($id);
         $products = Product::where('category_id', $id)->get();
 
         return view('frontend.ui.all_products', compact('categories', 'products', 'category'));
@@ -56,10 +48,9 @@ class FrontendController extends Controller
         $product = Product::findOrFail($id);
         $categories = Category::all(); 
         
-        // Fetch related products from the same category, excluding the current one
         $relatedProducts = Product::where('category_id', $product->category_id)
                                 ->where('id', '!=', $id)
-                                ->take(4) // Shows 4 related items
+                                ->take(4)
                                 ->get();
         
         return view('frontend.ui.product_details', compact('product', 'categories', 'relatedProducts'));
@@ -68,18 +59,14 @@ class FrontendController extends Controller
     public function allProducts(Request $request)
     {
         $categories = Category::all();
-        
-        // 1. Start the query
         $query = Product::query();
 
-        // 2. Check if a category ID was passed in the URL (e.g., ?category=1)
         if ($request->has('category') && $request->category != '') {
             $query->where('category_id', $request->category);
         }
 
         $products = $query->latest()->paginate(12);
 
-        // 3. Return the view with the selected category ID
         return view('frontend.ui.all_products', compact('categories', 'products'));
     }
 
@@ -114,14 +101,16 @@ class FrontendController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        // 1. Check if login matches an Admin from 'admins' table
+        if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
+            return redirect('/table'); // Admin Dashboard
+        }
 
-            if (Auth::user()->hasRole('Admin')) {
-                return redirect('/table'); 
-            }
-
-            return redirect('/');
+        // 2. Check if login matches a User from 'users' table
+        if (Auth::guard('web')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect('/'); // Customer Homepage
         }
 
         return back()->withErrors([
@@ -143,15 +132,21 @@ class FrontendController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        $user->assignRole('User');
-        Auth::login($user);
+        Auth::guard('web')->login($user);
 
         return redirect('/')->with('success', 'Registration successful! Welcome to PSM Craft House.');
     }
 
     public function logout(Request $request)
     {
-        Auth::logout();
+        if (Auth::guard('admin')->check()) {
+            Auth::guard('admin')->logout();
+        }
+
+        if (Auth::guard('web')->check()) {
+            Auth::guard('web')->logout();
+        }
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
