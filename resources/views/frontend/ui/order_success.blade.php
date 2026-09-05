@@ -22,31 +22,13 @@
     @if($order->payment_method != 'cod')
     <div class="card border-0 shadow-sm p-4 mx-auto mb-4 transact-card" style="max-width: 400px; border-radius: 20px;">
         <p class="small fw-bold text-muted mb-2">Please transfer {{ number_format($order->total_amount) }} K to:</p>
-        <div class="text-white p-3 rounded-3 mb-4" style="background-color: var(--color-primary);">
+        <div class="text-white p-3 rounded-3 mb-0" style="background-color: var(--color-primary);">
             <div class="fw-bold h5 mb-0">09 255 409 595</div>
             <div class="small opacity-75">(PSM Craft House - Pyae Thiri Cho)</div>
         </div>
-
-        <form action="{{ route('order.upload') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <input type="hidden" name="order_id" value="{{ $order->id }}">
-
-            <div class="mb-3 text-start">
-                <label class="small fw-bold text-muted mb-2">Upload Payment Screenshot</label>
-                <input type="file" name="screenshot" class="form-control rounded-3 shadow-none border-light bg-light" required id="slipInput">
-            </div>
-
-            <div id="previewContainer" class="mb-3 d-none">
-                <img id="previewImage" src="#" alt="slip preview" class="img-fluid rounded border shadow-sm" style="max-height: 200px;">
-            </div>
-
-            <button type="submit" class="btn btn-brand w-100 py-2 rounded-pill fw-bold shadow-sm">
-                <i class="fas fa-upload me-2"></i> Upload Slip
-            </button>
-        </form>
     </div>
     @else
-    <div class="alert d-inline-block px-5 rounded-pill border-0 shadow-sm" style="background: rgba(107,29,47,0.08); color: var(--color-primary);">
+    <div class="alert d-inline-block px-5 rounded-pill border-0 shadow-sm mt-3" style="background: rgba(107,29,47,0.08); color: var(--color-primary);">
         Our team will contact you soon for Cash on Delivery.
     </div>
     @endif
@@ -59,18 +41,5 @@
 <script>
     // Clears cart from storage
     localStorage.removeItem('psm_cart_data');
-
-    // Logic to show a preview of the image before uploading
-    const slipInput = document.getElementById('slipInput');
-    const previewContainer = document.getElementById('previewContainer');
-    const previewImage = document.getElementById('previewImage');
-
-    slipInput.onchange = evt => {
-        const [file] = slipInput.files;
-        if (file) {
-            previewImage.src = URL.createObjectURL(file);
-            previewContainer.classList.remove('d-none');
-        }
-    }
 </script>
 @endsection

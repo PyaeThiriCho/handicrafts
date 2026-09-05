@@ -29,7 +29,6 @@
                             <tbody>
                                 @forelse($order->order_items as $item)
                                     @php
-                                        // Safely extract price, qty, and product name with dynamic fallbacks
                                         $itemPrice = $item->price ?? optional($item->product)->price ?? 0;
                                         $itemQty   = $item->quantity ?? $item->qty ?? 1;
                                         $subtotal  = $itemPrice * $itemQty;
@@ -57,7 +56,7 @@
                                 @empty
                                     <tr>
                                         <td colspan="4" class="text-center text-muted py-4">
-                                            No item details found for this order. (This occurs if the order was created before items were configured to save to database).
+                                            No item details found for this order.
                                         </td>
                                     </tr>
                                 @endforelse
@@ -80,6 +79,12 @@
             <div class="card border-0 shadow-sm rounded-4 mb-4">
                 <div class="card-body p-4">
                     <h6 class="fw-bold mb-3">Customer Information</h6>
+                    <div class="mb-2">
+                        <small class="text-muted d-block">Order Placed Date & Time</small>
+                        <span class="fw-bold text-primary">
+                            <i class="far fa-clock me-1"></i> {{ $order->created_at->format('d M Y, h:i A') }}
+                        </span>
+                    </div>
                     <div class="mb-2">
                         <small class="text-muted d-block">Name</small>
                         <span class="fw-bold">{{ $order->customer_name }}</span>
@@ -106,19 +111,9 @@
                         <small class="text-muted d-block">Payment Method</small>
                         <span class="badge bg-primary px-3 text-uppercase">{{ $order->payment_method }}</span>
                     </div>
-                    
-                    @if($order->payment_screenshot)
-                        <div class="mb-3">
-                            <small class="text-muted d-block mb-2">Payment Slip</small>
-                            <a href="{{ asset('storage/' . $order->payment_screenshot) }}" target="_blank">
-                                <img src="{{ asset('storage/' . $order->payment_screenshot) }}" 
-                                     class="img-fluid rounded-3 border" style="max-height: 200px;">
-                            </a>
-                        </div>
-                    @endif
 
                     <div class="d-flex gap-2">
-                        @if($order->status == 'pending' || $order->status == 'processing')
+                        @if(in_array(strtolower($order->status), ['pending', 'processing']))
                             <form action="{{ route('admin.orders.accept', $order->id) }}" method="POST" class="flex-grow-1">
                                 @csrf
                                 <button type="submit" class="btn btn-success w-100 rounded-pill fw-bold py-2">
@@ -129,8 +124,8 @@
                             <form action="{{ route('admin.orders.decline', $order->id) }}" method="POST" class="flex-grow-1">
                                 @csrf
                                 <button type="submit" class="btn btn-danger w-100 rounded-pill fw-bold py-2" 
-                                        onclick="return confirm('Are you sure you want to decline this order?')">
-                                    <i class="fas fa-times"></i> Decline
+                                        onclick="return confirm('Are you sure you want to cancel this order?')">
+                                    <i class="fas fa-times"></i> Cancel
                                 </button>
                             </form>
                         @else
